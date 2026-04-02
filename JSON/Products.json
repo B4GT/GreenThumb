@@ -1,0 +1,49 @@
+{
+  "products": [
+    {
+      "id": 1001,
+      "name": "Reusable Bamboo Straw Set",
+      "image": "../ShopImages/bamboo_straws.jpg",
+      "short_description": "Eco-friendly bamboo straws that are reusable, biodegradable, and perfect for daily use.",
+      "price": 9.99,
+      "units_sold": 842,
+      "keywords": ["bamboo", "reusable", "zero-waste", "kitchen", "eco-friendly"]
+    },
+    {
+      "id": 1002,
+      "name": "Organic Cotton Tote Bag",
+      "image": "../ShopImages/cotton_tote.jpg",
+      "short_description": "Durable and stylish tote bag made from 100% organic cotton, ideal for shopping.",
+      "price": 14.99,
+      "units_sold": 1265,
+      "keywords": ["organic", "cotton", "bag", "reusable", "shopping"]
+    },
+    {
+      "id": 1003,
+      "name": "Stainless Steel Water Bottle",
+      "image": "../ShopImages/steel_bottle.jpg",
+      "short_description": "Insulated stainless steel bottle that keeps drinks cold or hot for hours.",
+      "price": 19.99,
+      "units_sold": 2154,
+      "keywords": ["water bottle", "reusable", "insulated", "metal", "hydration"]
+    },
+    {
+      "id": 1004,
+      "name": "Biodegradable Phone Case",
+      "image": "../ShopImages/phone_case.jpg",
+      "short_description": "Compostable phone case made from plant-based materials to reduce plastic waste.",
+      "price": 24.99,
+      "units_sold": 973,
+      "keywords": ["phone case", "biodegradable", "compostable", "eco", "accessories"]
+    },
+    {
+      "id": 1005,
+      "name": "Solar Powered Charger",
+      "image": "../ShopImages/solar_charger.jpg",
+      "short_description": "Portable solar charger for powering devices on the go using renewable energy.",
+      "price": 29.99,
+      "units_sold": 687,
+      "keywords": ["solar", "charger", "renewable", "energy", "portable"]
+    }
+  ]
+}
