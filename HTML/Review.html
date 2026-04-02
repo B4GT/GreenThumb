@@ -56,7 +56,7 @@
     .divider-line { width: 40px; height: 1.5px; background: var(--mint); border-radius: 2px; }
     .divider svg { display: block; }
 
-/* form fard */
+/* form card */
     .form-card {
       background: var(--cream);
       border: 1.5px solid var(--border);
@@ -135,7 +135,7 @@
     }
     .success-msg.show { display: flex; animation: fadeIn 0.3s ease; }
 
-/* compleeted reviews */
+/* completed reviews */
     .reviews-header {
       display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
     }
@@ -213,7 +213,7 @@
       <h2>Write a Review</h2>
 
       <div class="form-group">
-        <label for="productName">Prodjct Name</label>
+        <label for="productName">Product Name</label>
         <input type="text" id="productName" placeholder="" maxlength="80"/>
       </div>
 
@@ -257,7 +257,8 @@
 
   <script>
     let selectedRating = 0;
-    const reviews = [];
+    //const reviews = []; old reviews array before adding localstorage
+    const reviews = JSON.parse(localStorage.getItem('reviews') || '[]').map(r => ({ ...r, date: new Date(r.date) }));
     const stars = document.querySelectorAll('.star');
 
     stars.forEach(star => {
@@ -279,6 +280,7 @@
       if (!text)            { shake('reviewText');  return; }
 
       reviews.unshift({ product, rating: selectedRating, text, date: new Date() });
+      localStorage.setItem('reviews', JSON.stringify(reviews)); // save reviews to localstorage
       renderReviews();
       resetForm();
       flashSuccess();
@@ -328,6 +330,8 @@
     function escHtml(str) {
       return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
+
+    if (reviews.length) renderReviews();
   </script>
 
 </body>
