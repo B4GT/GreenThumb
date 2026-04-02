@@ -19,10 +19,14 @@ cs username: elanza05
 
 /* Targets images inside the plant-display container */
 .plant-display img{
-    width:200px;
+    width: 200px;
+    height: 250px;
+    object-fit: contain;
     transition: transform 0.8s ease;
     /* Smooth animation when a transform (like rotation) occurs */
     border-style: solid;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Class used to trigger a rotation animation */
