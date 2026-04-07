@@ -19,12 +19,38 @@
       --border:    #c2deba;
     }
 
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: center; gap: 6px;
+      background: var(--cream);
+      border-bottom: 1.5px solid var(--border);
+      padding: 12px 20px;
+      box-shadow: 0 2px 12px rgba(45,90,39,0.08);
+    }
+    .navbar a {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px; font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 16px;
+      border-radius: 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .navbar a:hover {
+      background: #eaf3de;
+      color: var(--moss);
+    }
+    .navbar a.active {
+      background: var(--moss);
+      color: #eaf3de;
+    }
+
     body {
       font-family: 'Nunito', sans-serif;
       background: var(--parchment);
       color: var(--forest);
       min-height: 100vh;
-      padding: 60px 20px;
+      padding: 100px 20px 60px;
       background-image:
         radial-gradient(ellipse at 10% 20%, rgba(122,171,110,0.15) 0%, transparent 50%),
         radial-gradient(ellipse at 90% 80%, rgba(45,90,39,0.1) 0%, transparent 50%);
@@ -191,6 +217,15 @@
   </style>
 </head>
 <body>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="Cart.html">Shopping Cart</a>
+    <a href="Shop.html">Shop</a>
+    <a href="Checkout.html">Checkout</a>
+    <a href="About.html">About</a>
+    <a href="Review.html" class="active">Reviews</a>
+  </nav>
 
   <div class="page">
 
