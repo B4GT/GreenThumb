@@ -46,5 +46,9 @@ button{
     cursor:pointer;
     background-color: #c2deba;
     color: #3b6d11;
-    border-color: #1a3a16;
+
+    border-style: solid;
+    border-width: 2px;
+
+    border-color: #3B6D11;
 }
