@@ -22,16 +22,15 @@ const authMiddleware = async (req, res, next) => {
 
         const user = await User.findById(req.userInfo.userId);
 
-        req.userInfo.firstname = user.firstname;
-        req.userInfo.lastname = user.lastname;
+        req.userInfo.name = user.name;
         req.userInfo.role = user.role;
-        req.userInfo.email = user.email
+        req.userInfo.email = user.email;
 
         if (!user) {
             res.clearCookie('access_token', {
                 httpOnly: true,
                 secure: false, // true in prod, false in dev
-                sameSite: 'none',
+                sameSite: 'lax',
             });
             return res.status(401).json({
                 success: false,
