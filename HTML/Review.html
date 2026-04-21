@@ -79,7 +79,7 @@
       display: flex; align-items: center; gap: 10px;
       margin: 18px auto 0; width: fit-content;
     }
-    .divider-line { width: 40px; height: 1.5px; background: var(--mint); border-radius: 2px; }
+    .divider-line { width: 40px; height: 1.5px; background: var(--parchment); border-radius: 2px; }
     .divider svg { display: block; }
 
 /* form card */
@@ -294,14 +294,19 @@
     let selectedRating = 0;
     let reviews = [];
     const stars = document.querySelectorAll('.star');
-
-    const API_URL = 'https://www.cs.umb.edu/~hdeblois/cs410/longproj02/t4/GreenThumb/PHP/Review.php';
+    //from my jsonbin.io account. hopefully this works for review storage.
+    const JSONBIN_BIN_ID = '69e7ad91856a6821895a06b7';
+    const JSONBIN_API_KEY = '$2a$10$i6a3pBPhONunPLutYwpJFuKAcMGB8.DMonGAGZ3MHDyKNntS7slNC';
+    const API_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
 
     async function loadReviews() {
       try {
-        const res = await fetch(API_URL);
+        const res = await fetch(API_URL, {
+          headers: { 'X-Master-Key': JSONBIN_API_KEY }
+        });
+        if (!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
-        reviews = (data.reviews || []).map(r => ({ ...r, date: new Date(r.date) }));
+        reviews = (data.record?.reviews || []).map(r => ({ ...r, date: new Date(r.date) }));
       } catch (e) {
         console.error('Failed to load reviews:', e);
         reviews = [];
@@ -330,17 +335,32 @@
       const newReview = { product, rating: selectedRating, text, date: new Date().toISOString() };
 
       try {
-        const res = await fetch(API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newReview)
+        //GET current data
+        const getRes = await fetch(API_URL, {
+          headers: { 'X-Master-Key': JSONBIN_API_KEY }
         });
-        if (!res.ok) throw new Error('Server returned ' + res.status);
-        //reload reviews from the server so the list is in sync
+        const getData = await getRes.json();
+        const currentReviews = getData.record?.reviews || [];
+
+        //add new review to the top
+        const updatedReviews = [newReview, ...currentReviews];
+
+        //PUT updated data back
+        const putRes = await fetch(API_URL, {
+          method: 'PUT',
+          headers: { 
+            'Content-Type': 'application/json',
+            'X-Master-Key': JSONBIN_API_KEY
+          },
+          body: JSON.stringify({ reviews: updatedReviews })
+        });
+        if (!putRes.ok) throw new Error('Failed to save');
+        
+        //load from server
         await loadReviews();
       } catch (e) {
         console.error('Failed to save review:', e);
-        //still show it locally so the user sees feedback
+        //show locally even if server fails
         reviews.unshift({ ...newReview, date: new Date(newReview.date) });
         renderReviews();
       }
