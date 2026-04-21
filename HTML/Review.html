@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Reviews</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --moss:      #3B6D11;
+      --forest:    #1a3a16;
+      --sage:      #639922;
+      --mint:      #c0dd97;
+      --parchment: #f4f9f2;
+      --cream:     #fefcf8;
+      --muted:     #6b8f63;
+      --border:    #c2deba;
+    }
+
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: center; gap: 6px;
+      background: var(--cream);
+      border-bottom: 1.5px solid var(--border);
+      padding: 12px 20px;
+      box-shadow: 0 2px 12px rgba(45,90,39,0.08);
+    }
+    .navbar a {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px; font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 16px;
+      border-radius: 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .navbar a:hover {
+      background: #eaf3de;
+      color: var(--moss);
+    }
+    .navbar a.active {
+      background: var(--moss);
+      color: #eaf3de;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--mint);
+      color: var(--forest);
+      min-height: 100vh;
+      padding: 100px 20px 60px;
+      background-image:
+        radial-gradient(ellipse at 10% 20%, rgba(122,171,110,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(45,90,39,0.1) 0%, transparent 50%);
+    }
+
+    .page { max-width: 700px; margin: 0 auto; }
+
+/* header */
+    .header { text-align: center; margin-bottom: 52px; }
+    .header-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #eaf3de; color: var(--moss);
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 5px 16px;
+      border-radius: 30px; margin-bottom: 16px;
+      border: 1px solid var(--mint);
+    }
+    .header h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 600; line-height: 1.2; color: var(--forest);
+    }
+    .header h1 em { font-style: italic; color: var(--moss); }
+    .header-sub { color: var(--muted); font-size: 15px; margin-top: 10px; }
+    .divider {
+      display: flex; align-items: center; gap: 10px;
+      margin: 18px auto 0; width: fit-content;
+    }
+    .divider-line { width: 40px; height: 1.5px; background: var(--mint); border-radius: 2px; }
+    .divider svg { display: block; }
+
+/* form card */
+    .form-card {
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 52px;
+      box-shadow: 0 8px 32px rgba(45,90,39,0.08);
+      position: relative; overflow: hidden;
+    }
+    .form-card::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle at top right, rgba(122,171,110,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .form-card h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--forest); margin-bottom: 28px;
+    }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%; padding: 13px 16px;
+      background: var(--parchment);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-family: 'Nunito', sans-serif; font-size: 15px;
+      color: var(--forest); outline: none; resize: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #a8c4a2; }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(99,153,34,0.15);
+    }
+    .form-group textarea { height: 120px; }
+
+/* star rating */
+    .stars-row { display: flex; gap: 8px; }
+    .star {
+      font-size: 30px; cursor: pointer;
+      color: #c8dbc4; line-height: 1; user-select: none;
+      transition: color 0.15s, transform 0.15s;
+      background: none; border: none; padding: 0;
+    }
+    .star:hover, .star.lit { color: var(--sage); transform: scale(1.2); }
+
+    .submit-btn {
+      width: 100%; padding: 15px;
+      background: var(--moss); color: #eaf3de;
+      border: none; border-radius: 12px;
+      font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(59,109,17,0.3);
+    }
+    .submit-btn:hover { background: var(--forest); box-shadow: 0 6px 20px rgba(59,109,17,0.4); }
+    .submit-btn:active { transform: scale(0.98); }
+
+    .success-msg {
+      display: none; align-items: center; gap: 10px;
+      background: #eaf3de; border: 1px solid #a8d890;
+      color: var(--moss); border-radius: 10px;
+      padding: 13px 18px; font-size: 14px; font-weight: 600;
+      margin-top: 14px;
+    }
+    .success-msg.show { display: flex; animation: fadeIn 0.3s ease; }
+
+/* completed reviews */
+    .reviews-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+    }
+    .reviews-header h2 {
+      font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 600;
+    }
+    .review-count {
+      background: var(--moss); color: #eaf3de;
+      font-size: 12px; font-weight: 700;
+      padding: 3px 11px; border-radius: 20px;
+    }
+
+    .empty-state {
+      text-align: center; padding: 52px 20px;
+      color: var(--muted); font-size: 15px;
+      background: var(--cream);
+      border: 1.5px dashed var(--border); border-radius: 18px;
+    }
+    .empty-state .empty-icon { font-size: 36px; margin-bottom: 12px; }
+
+/* review card */
+    .review-card {
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-left: 4px solid var(--sage);
+      border-radius: 14px; padding: 24px 28px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 12px rgba(45,90,39,0.06);
+      animation: slideUp 0.35s ease;
+    }
+    .review-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; margin-bottom: 4px;
+    }
+    .review-product {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem; font-weight: 600; color: var(--forest);
+    }
+    .review-stars { color: var(--sage); font-size: 16px; letter-spacing: 2px; }
+    .review-date { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+    .review-text { font-size: 15px; line-height: 1.75; color: #3a5235; }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25%      { transform: translateX(-6px); }
+      75%      { transform: translateX(6px); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="Cart.html">Shopping Cart</a>
+    <a href="Shop.html">Shop</a>
+    <a href="Checkout.html">Checkout</a>
+    <a href="About.html">About</a>
+    <a href="Review.html" class="active">Reviews</a>
+  </nav>
+
+  <div class="page">
+
+    <!-- header -->
+    <header class="header">
+      <div class="header-badge">&#10003; Doing your research</div>
+      <h1>Product Reviews</h1>
+      <p class="header-sub">Feedback from other buyers</p>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 1C8 1 5.5 5 2 6C2 6 4.5 10 3.5 13C3.5 13 6.5 11.5 8 8C9.5 11.5 12.5 13 12.5 13C11.5 10 14 6 14 6C10.5 5 8 1 8 1Z" fill="#639922"/>
+        </svg>
+        <div class="divider-line"></div>
+      </div>
+    </header>
+
+    <!-- form -->
+    <div class="form-card">
+      <h2>Write a Review</h2>
+
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" id="productName" placeholder="" maxlength="80"/>
+      </div>
+
+      <div class="form-group">
+        <label>Rating</label>
+        <div class="stars-row" id="starRow">
+          <button class="star" data-val="1">&#9733;</button>
+          <button class="star" data-val="2">&#9733;</button>
+          <button class="star" data-val="3">&#9733;</button>
+          <button class="star" data-val="4">&#9733;</button>
+          <button class="star" data-val="5">&#9733;</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="reviewText">Your Review</label>
+        <textarea id="reviewText" placeholder="What did you think?"></textarea>
+      </div>
+
+      <button class="submit-btn" onclick="submitReview()">Post Review</button>
+
+      <div class="success-msg" id="successMsg">
+        &#10003;&nbsp; Your review has been posted. Thank you!
+      </div>
+    </div>
+
+    <!-- reviews list -->
+    <div class="reviews-header">
+      <h2>All Reviews</h2>
+      <span class="review-count" id="reviewCount">0</span>
+    </div>
+
+    <div id="reviewsList">
+      <div class="empty-state">
+        <div class="empty-icon">&#127807;</div>
+        No reviews yet. Be the one to get this party started.
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let selectedRating = 0;
+    let reviews = [];
+    const stars = document.querySelectorAll('.star');
+
+    const API_URL = 'https://www.cs.umb.edu/~hdeblois/cs410/longproj02/t4/GreenThumb/PHP/Review.php';
+
+    async function loadReviews() {
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        reviews = (data.reviews || []).map(r => ({ ...r, date: new Date(r.date) }));
+      } catch (e) {
+        console.error('Failed to load reviews:', e);
+        reviews = [];
+      }
+      renderReviews();
+    }
+
+    stars.forEach(star => {
+      star.addEventListener('mouseover', () => litStars(+star.dataset.val));
+      star.addEventListener('mouseout',  () => litStars(selectedRating));
+      star.addEventListener('click',     () => { selectedRating = +star.dataset.val; litStars(selectedRating); });
+    });
+
+    function litStars(n) {
+      stars.forEach(s => s.classList.toggle('lit', +s.dataset.val <= n));
+    }
+
+    async function submitReview() {
+      const product = document.getElementById('productName').value.trim();
+      const text    = document.getElementById('reviewText').value.trim();
+
+      if (!product)         { shake('productName'); return; }
+      if (!selectedRating)  { shake('starRow');     return; }
+      if (!text)            { shake('reviewText');  return; }
+
+      const newReview = { product, rating: selectedRating, text, date: new Date().toISOString() };
+
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newReview)
+        });
+        if (!res.ok) throw new Error('Server returned ' + res.status);
+        //reload reviews from the server so the list is in sync
+        await loadReviews();
+      } catch (e) {
+        console.error('Failed to save review:', e);
+        //still show it locally so the user sees feedback
+        reviews.unshift({ ...newReview, date: new Date(newReview.date) });
+        renderReviews();
+      }
+
+      resetForm();
+      flashSuccess();
+    }
+
+    function renderReviews() {
+      const list = document.getElementById('reviewsList');
+      document.getElementById('reviewCount').textContent = reviews.length;
+
+      if (!reviews.length) {
+        list.innerHTML = '<div class="empty-state"><div class="empty-icon">&#127807;</div>No reviews yet. Be the one to get this party started.</div>';
+        return;
+      }
+
+      list.innerHTML = reviews.map(r => `
+        <div class="review-card">
+          <div class="review-top">
+            <span class="review-product">${escHtml(r.product)}</span>
+            <span class="review-stars">${'&#9733;'.repeat(r.rating)}${'&#9734;'.repeat(5 - r.rating)}</span>
+          </div>
+          <div class="review-date">${r.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+          <p class="review-text">${escHtml(r.text)}</p>
+        </div>
+      `).join('');
+    }
+
+    function resetForm() {
+      document.getElementById('productName').value = '';
+      document.getElementById('reviewText').value = '';
+      selectedRating = 0;
+      litStars(0);
+    }
+
+    function flashSuccess() {
+      const el = document.getElementById('successMsg');
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 3500);
+    }
+
+    function shake(id) {
+      const el = document.getElementById(id);
+      el.style.animation = 'none';
+      el.offsetHeight;
+      el.style.animation = 'shake 0.3s ease';
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    loadReviews();
+  </script>
+
+</body>
+</html>
