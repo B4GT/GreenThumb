@@ -294,7 +294,7 @@
     let selectedRating = 0;
     let reviews = [];
     const stars = document.querySelectorAll('.star');
-
+    //from my jsonbin.io account. hopefully this works for review storage.
     const JSONBIN_BIN_ID = '69e7ad91856a6821895a06b7';
     const JSONBIN_API_KEY = '$2a$10$i6a3pBPhONunPLutYwpJFuKAcMGB8.DMonGAGZ3MHDyKNntS7slNC';
     const API_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
@@ -335,7 +335,7 @@
       const newReview = { product, rating: selectedRating, text, date: new Date().toISOString() };
 
       try {
-        // GET current data
+        //GET current data
         const getRes = await fetch(API_URL, {
           headers: { 'X-Master-Key': JSONBIN_API_KEY }
         });
@@ -345,7 +345,7 @@
         //add new review to the top
         const updatedReviews = [newReview, ...currentReviews];
 
-        // PUT updated data back
+        //PUT updated data back
         const putRes = await fetch(API_URL, {
           method: 'PUT',
           headers: { 
