@@ -1,46 +1,221 @@
-.page {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: auto;
-    gap: 20px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #eef5ea;
+  color: #2f3a2f;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.product-card {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  border: 2px solid #444;
+  border-radius: 25px;
+  padding: 40px;
+  background-color: white;
+  align-items: start;
+}
+
+/* IMAGE SIDE */
 .product-image {
-    width: 400px;
-    height: 400px;
-    border: solid black 2px;
-    border-radius: 20px;
-    padding: 20px;
-
+  position: relative;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  border: 2px solid #444;
+  border-radius: 25px;
+  background-color: #eef5ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  overflow: hidden;
+}
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.product-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.image-buttons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+  pointer-events: none;
+}
+.image-buttons button {
+  pointer-events: auto;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #444;
+  border-radius: 50%;
+  background-color: rgba(254, 252, 248, 0.9);
+  backdrop-filter: blur(4px);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+  color: #2f3a2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-buttons button:hover {
+  background-color: #dce8d4;
+  transform: scale(1.08);
+}
+
+/* INFO SIDE */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .product-name {
-    padding-top: 20px;
-    font-size: xx-large;
+  font-family: 'Lora', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #1a3a16;
+  line-height: 1.2;
 }
 
 .product-price {
-    padding-top: 20px;
-    font-size: xx-large;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #3b6d11;
 }
 
-.star-row {
-    display: flex;
-    flex-direction: row;
-    font-size: xx-large;
+.product-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #3a5235;
 }
 
+/* REVIEWS / STARS */
+.product-reviews .star-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 1.3rem;
+  color: #7aa874;
+}
+.product-reviews .star-row .star {
+  line-height: 1;
+}
+.product-reviews .star-row::after {
+  color: #6b8f63;
+  font-size: 0.95rem;
+  margin-left: 6px;
+}
+
+/* ADD TO CART */
 .add-to-cart {
-    display: flex;
-    gap: 20px;
-    flex-direction: row;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.qty-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid #444;
+  border-radius: 20px;
+  padding: 8px 14px;
+  background-color: #fefcf8;
+  font-size: 0.95rem;
+  color: #2f3a2f;
+}
+.qty-wrap label {
+  font-weight: 500;
+}
+#item-quantity {
+  width: 50px;
+  padding: 4px 6px;
+  border: 1px solid #c2deba;
+  border-radius: 6px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  text-align: center;
+  outline: none;
+}
+#item-quantity:focus {
+  border-color: #7aa874;
+}
 
+.quick-add-to-cart {
+  flex: 1;
+  min-width: 180px;
+  padding: 12px 22px;
+  background-color: #7aa874;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.quick-add-to-cart:hover {
+  background-color: #678f62;
+}
+
+.like-button {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #444;
+  border-radius: 50%;
+  background-color: #fefcf8;
+  color: #3b6d11;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s, transform 0.15s;
+}
+.like-button:hover {
+  background-color: #7aa874;
+  color: white;
+  transform: scale(1.08);
+}
+.like-button.liked {
+  background-color: #7aa874;
+  color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .product-card {
+    grid-template-columns: 1fr;
+    padding: 25px;
+    gap: 25px;
+  }
+  .product-name {
+    font-size: 1.7rem;
+  }
+  .add-to-cart {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .quick-add-to-cart {
+    width: 100%;
+  }
+  .like-button {
+    align-self: center;
+  }
 }

@@ -23,7 +23,7 @@
     {
       "id": 3,
       "name": "Stainless Steel Water Bottle",
-      "images": ["../ShopImages/steel_bottle.jpg"],
+      "images": ["../ShopImages/steel_bottle.jpg", "../ShopImages/cotton_tote.jpg" ],
       "short_description": "Insulated stainless steel bottle that keeps drinks cold or hot for hours.",
       "price": 19.99,
       "rating": 4.9,

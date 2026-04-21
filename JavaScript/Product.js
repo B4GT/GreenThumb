@@ -36,6 +36,8 @@ fetch('../JSON/Products.json')
             stars.append(star)
         }
 
+        stars.append(`(${product.rating})`)
+
         reviews.append(stars)
 
 
@@ -45,27 +47,23 @@ fetch('../JSON/Products.json')
         const imgs = product.images
         let i = 0;
         const img = document.createElement("img");
-
+        
 
         if (imgs.length > 1) {
-
             const prev = document.createElement("button");
             const next = document.createElement("button");
-            const imgButtons = document.querySelector('.image-buttons')
-
+            const imgButtons = document.createElement("div");
+            imgButtons.classList.add("image-buttons");
             prev.textContent = "←";
             next.textContent = "→";
-
             prev.onclick = () => { i = (i - 1 + imgs.length) % imgs.length; img.src = imgs[i]; };
             next.onclick = () => { i = (i + 1) % imgs.length; img.src = imgs[i]; };
-
             img.src = imgs[0];
-
             imgButtons.append(prev, next);
+            document.querySelector('.product-image').append(imgButtons);
         } else {
             img.src = imgs[0];
         }
-
 
 
 
