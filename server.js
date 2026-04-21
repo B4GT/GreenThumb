@@ -6,9 +6,13 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const connectToDB = require('./mongodb')
 
-const adminProductRoutes = require('./routes/admin-route')
 const authRoutes = require('./routes/auth-route')
 const orderRoutes = require('./routes/order-route')
+
+
+const productRoutes = require('./routes/product-route')
+const adminProductRoutes = require('./routes/admin-route')
+
 
 const app = express()
 
@@ -45,6 +49,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/admin/products', adminProductRoutes)
+app.use('/api/products', productRoutes)
+
 app.use('/api/auth', authRoutes)
 app.use('/api/orders', orderRoutes)
 
