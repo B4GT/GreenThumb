@@ -59,9 +59,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             addToCartBtn.addEventListener("click", (e) => {
                 e.stopPropagation();
-                const quantity = card.querySelector('input').value
-                console.log(`Added ${quantity} of ${product.name} to cart`)
-                quickBuyCard.classList.remove("visible")
+                const quantity = parseInt(card.querySelector('input').value);
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                let existingItem = cart.find(item => item.name === product.name);
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    cart.push({
+                        name: product.name,
+                        price: parseFloat(product.price),
+                        quantity: quantity
+                    });
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+                console.log(`Added ${quantity} of ${product.name} to cart`);
+                quickBuyCard.classList.remove("visible");
             })
 
             viewBtn.addEventListener('click', (e) => {
