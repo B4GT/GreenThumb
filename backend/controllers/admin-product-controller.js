@@ -8,6 +8,7 @@ const addProduct = async (req, res) => {
             price,
             category,
             stock,
+            keywords,
             images
         } = req.body
 
@@ -25,6 +26,7 @@ const addProduct = async (req, res) => {
             price,
             category,
             stock,
+            keywords,
             images
         })
 
@@ -109,6 +111,7 @@ const updateProduct = async (req, res) => {
             price,
             category,
             stock,
+            keywords,
             images
         } = req.body
 
@@ -118,6 +121,7 @@ const updateProduct = async (req, res) => {
             price,
             category,
             stock,
+            keywords,
             images
         }
 

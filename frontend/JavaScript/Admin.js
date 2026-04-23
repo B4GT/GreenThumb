@@ -35,6 +35,7 @@ productForm.addEventListener("submit", async function (e) {
         price,
         category,
         stock,
+        keywords: keywordsArray,
         images: imagesArray
     };
 
