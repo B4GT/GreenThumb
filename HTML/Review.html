@@ -284,7 +284,7 @@
     <div id="reviewsList">
       <div class="empty-state">
         <div class="empty-icon">&#127807;</div>
-        No reviews yet. Be the one to get this party started.
+        Loading reviews...
       </div>
     </div>
 
@@ -372,13 +372,11 @@
     function renderReviews() {
       const list = document.getElementById('reviewsList');
       document.getElementById('reviewCount').textContent = reviews.length;
-      list.innerHTML = '<div class="empty-state"><div class="empty-icon">&#127807;</div>Loading reviews...</div>';
 
       if (!reviews.length) {
         list.innerHTML = '<div class="empty-state"><div class="empty-icon">&#127807;</div>No reviews yet. Be the one to get this party started.</div>';
         return;
       }
-
       list.innerHTML = reviews.map(r => `
         <div class="review-card">
           <div class="review-top">
