@@ -372,6 +372,7 @@
     function renderReviews() {
       const list = document.getElementById('reviewsList');
       document.getElementById('reviewCount').textContent = reviews.length;
+      list.innerHTML = '<div class="empty-state"><div class="empty-icon">&#127807;</div>Loading reviews...</div>';
 
       if (!reviews.length) {
         list.innerHTML = '<div class="empty-state"><div class="empty-icon">&#127807;</div>No reviews yet. Be the one to get this party started.</div>';
