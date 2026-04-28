@@ -5,11 +5,12 @@ const searchResults = document.getElementById("searchResults");
 const productIdInput = document.getElementById("productId");
 const nameInput = document.getElementById("name");
 const descriptionInput = document.getElementById("description");
-const imagesInput = document.getElementById("images");
+const imageInput = document.getElementById("imageInput");
 const priceInput = document.getElementById("price");
 const keyWordsInput = document.getElementById("keyWords");
 const categoryInput = document.getElementById("category");
 const stockInput = document.getElementById("stock");
+const imagePreview = document.getElementById("imagePreview");
 
 searchForm.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -20,7 +21,7 @@ productForm.addEventListener("submit", async function (e) {
 
     const name = nameInput.value;
     const description = descriptionInput.value;
-    const images = imagesInput.value;
+    const images = imageInput.value;
     const price = Number(priceInput.value);
     const keyWords = keyWordsInput.value;
     const category = categoryInput.value;
@@ -62,4 +63,25 @@ productForm.addEventListener("submit", async function (e) {
 
     const data = await response.json();
     console.log(data);
+});
+
+imageInput.addEventListener("input", () => { //Makes the images display whenever the URL is entered (I can try to implement an upload system later)
+  const urls = imageInput.value
+    .split(",")
+    .map(url => url.trim())
+    .filter(url => url !== "");
+
+    imagePreview.innerHTML = "";
+
+    urls.forEach(url => {
+    const img = document.createElement("img");
+    img.src = url;
+    img.style.width = "300px";
+    img.style.margin = "10px";
+
+    // makes sure that only working links work. this also keep it from trying to display a link that isn't fully typed out
+    img.onerror = () => img.remove();
+
+    imagePreview.appendChild(img);
+  });
 });
