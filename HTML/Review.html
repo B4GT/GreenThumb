@@ -105,8 +105,8 @@
       color: var(--forest); margin-bottom: 28px;
     }
 
-    .form-group { margin-bottom: 20px; }
-    .form-group label {
+     .form-group { margin-bottom: 20px; position: relative; }
+     .form-group label {
       display: block; font-size: 12px; font-weight: 600;
       letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--muted); margin-bottom: 8px;
@@ -333,10 +333,14 @@
      //product name filter
      async function loadProducts() {
        try {
+         console.log('Attempting to load products from:', PRODUCTS_URL);
          const res = await fetch(PRODUCTS_URL);
+         console.log('Products fetch status:', res.status);
          if (!res.ok) throw new Error('Failed to fetch products');
          const data = await res.json();
+         console.log('Products data received:', data);
          products = data.products || [];
+         console.log('Loaded products:', products.length); // Debug line
        } catch (e) {
          console.error('Failed to load products:', e);
          products = []; // continue with empty products list
