@@ -202,7 +202,34 @@
     }
     .review-stars { color: var(--sage); font-size: 16px; letter-spacing: 2px; }
     .review-date { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
-    .review-text { font-size: 15px; line-height: 1.75; color: #3a5235; }
+     .review-text { font-size: 15px; line-height: 1.75; color: #3a5235; }
+
+    /* product autocomplete */
+    .product-dropdown {
+      position: absolute;
+      z-index: 1000;
+      margin-top: 4px;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      background: var(--cream);
+      box-shadow: 0 8px 32px rgba(45,90,39,0.08);
+    }
+    .product-dropdown div {
+      padding: 13px 16px;
+      font-size: 15px;
+      color: var(--forest);
+      cursor: pointer;
+    }
+    .product-dropdown div:hover {
+      background: #eaf3de;
+    }
+    .product-dropdown div.selected {
+      background: var(--mint);
+      color: var(--forest);
+    }
 
     @keyframes slideUp {
       from { opacity: 0; transform: translateY(12px); }
@@ -247,10 +274,11 @@
     <div class="form-card">
       <h2>Write a Review</h2>
 
-      <div class="form-group">
-        <label for="productName">Product Name</label>
-        <input type="text" id="productName" placeholder="" maxlength="80"/>
-      </div>
+       <div class="form-group">
+         <label for="productName">Product Name</label>
+         <input type="text" id="productName" placeholder="" maxlength="80"/>
+         <div id="productDropdown" class="product-dropdown"></div>
+       </div>
 
       <div class="form-group">
         <label>Rating</label>
@@ -291,15 +319,81 @@
   </div>
 
   <script>
-    let selectedRating = 0;
-    let reviews = [];
-    const stars = document.querySelectorAll('.star');
-    //from my jsonbin.io account. hopefully this works for review storage.
-    const JSONBIN_BIN_ID = '69e7ad91856a6821895a06b7';
-    const JSONBIN_API_KEY = '$2a$10$i6a3pBPhONunPLutYwpJFuKAcMGB8.DMonGAGZ3MHDyKNntS7slNC';
-    const API_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+     let selectedRating = 0;
+     let reviews = [];
+     let products = [];
+     let filteredProducts = [];
+     const stars = document.querySelectorAll('.star');
+     //from my jsonbin.io account. hopefully this works for review storage.
+     const JSONBIN_BIN_ID = '69e7ad91856a6821895a06b7';
+     const JSONBIN_API_KEY = '$2a$10$i6a3pBPhONunPLutYwpJFuKAcMGB8.DMonGAGZ3MHDyKNntS7slNC';
+     const API_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+     const PRODUCTS_URL = 'https://www.cs.umb.edu/~hdeblois/cs410/longproj02/t4/GreenThumb/JSON/Products.json';
 
-    async function loadReviews() {
+     //product name filter
+     async function loadProducts() {
+       try {
+         const res = await fetch(PRODUCTS_URL);
+         if (!res.ok) throw new Error('Failed to fetch products');
+         const data = await res.json();
+         products = data.products || [];
+       } catch (e) {
+         console.error('Failed to load products:', e);
+         products = []; // continue with empty products list
+       }
+     }
+
+     //product name filter
+     function filterProducts(query) {
+       if (!query.trim()) {
+         filteredProducts = [];
+         hideProductDropdown();
+         return;
+       }
+       
+       const lowerQuery = query.toLowerCase();
+       filteredProducts = products.filter(product => 
+         product.name.toLowerCase().includes(lowerQuery)
+       );
+       
+       if (filteredProducts.length > 0) {
+         showProductDropdown();
+       } else {
+         hideProductDropdown();
+       }
+     }
+
+     //product name filter
+     function showProductDropdown() {
+       const dropdown = document.getElementById('productDropdown');
+       const input = document.getElementById('productName');
+       const rect = input.getBoundingClientRect();
+       
+       dropdown.innerHTML = filteredProducts.map(product => 
+         `<div class="product-item" data-name="${product.name}">${product.name}</div>`
+       ).join('');
+       
+       //position dropdown below input
+       dropdown.style.top = `${rect.bottom + window.scrollY}px`;
+       dropdown.style.left = `${rect.left + window.scrollX}px`;
+       dropdown.style.display = 'block';
+       
+       //add click handlers
+       dropdown.querySelectorAll('.product-item').forEach(item => {
+         item.addEventListener('click', () => {
+           selectProduct(item.dataset.name);
+         });
+       });
+     }
+     function hideProductDropdown() {
+       document.getElementById('productDropdown').style.display = 'none';
+     }
+     function selectProduct(productName) {
+       document.getElementById('productName').value = productName;
+       hideProductDropdown();
+     }
+
+     async function loadReviews() {
       try {
         const res = await fetch(API_URL, {
           headers: { 'X-Master-Key': JSONBIN_API_KEY }
@@ -324,13 +418,16 @@
       stars.forEach(s => s.classList.toggle('lit', +s.dataset.val <= n));
     }
 
-    async function submitReview() {
-      const product = document.getElementById('productName').value.trim();
-      const text    = document.getElementById('reviewText').value.trim();
+     async function submitReview() {
+       const product = document.getElementById('productName').value.trim();
+       const text    = document.getElementById('reviewText').value.trim();
 
-      if (!product)         { shake('productName'); return; }
-      if (!selectedRating)  { shake('starRow');     return; }
-      if (!text)            { shake('reviewText');  return; }
+       if (!product)         { shake('productName'); return; }
+       //valid product check
+       const isValidProduct = products.some(p => p.name === product);
+       if (!isValidProduct)  { shake('productName'); return; }
+       if (!selectedRating)  { shake('starRow');     return; }
+       if (!text)            { shake('reviewText');  return; }
 
       const newReview = { product, rating: selectedRating, text, date: new Date().toISOString() };
 
@@ -413,7 +510,50 @@
       return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    loadReviews();
+     //product name filter
+     async function init() {
+       await loadProducts();
+       loadReviews();
+       
+       const productInput = document.getElementById('productName');
+       productInput.addEventListener('input', (e) => {
+         filterProducts(e.target.value);
+       });
+       
+       //hide dropdown when clicking outside
+       document.addEventListener('click', (e) => {
+         const dropdown = document.getElementById('productDropdown');
+         const input = document.getElementById('productName');
+         if (!dropdown.contains(e.target) && e.target !== input) {
+           hideProductDropdown();
+         }
+       });
+       
+       //keyboard navigation
+       productInput.addEventListener('keydown', (e) => {
+         if (e.key === 'Escape') {
+           hideProductDropdown();
+         } else if (e.key === 'ArrowDown') {
+           e.preventDefault();
+           //TODO: implement arrow down navigation
+         } else if (e.key === 'ArrowUp') {
+           e.preventDefault();
+           //TODO: implement arrow up navigation
+         } else if (e.key === 'Enter') {
+           e.preventDefault();
+           //select highlighted
+           const dropdown = document.getElementById('productDropdown');
+           if (dropdown.style.display === 'block') {
+             const highlighted = dropdown.querySelector('.product-item.selected');
+             if (highlighted) {
+               selectProduct(highlighted.dataset.name);
+             }
+           }
+         }
+       });
+     }
+     
+     init();
   </script>
 
 </body>
