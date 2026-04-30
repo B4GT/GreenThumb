@@ -1,3 +1,5 @@
+const API_BASE = "http://localhost:3000";
+
 const searchForm = document.getElementById("searchForm");
 const productForm = document.getElementById("productForm");
 const searchResults = document.getElementById("searchResults");
@@ -14,6 +16,28 @@ const imagePreview = document.getElementById("imagePreview");
 
 searchForm.addEventListener("submit", async function (e) {
     e.preventDefault();
+
+    const query = document.getElementById("query").value.trim();
+
+    const response = await fetch(`${API_BASE}/api/admin/products/search-products?query=${encodeURIComponent(query)}`, {
+        method: "GET",
+        credentials: "include"
+    });
+
+    const data = await response.json();
+    console.log(data);
+
+    searchResults.innerHTML = "";
+
+    if (!response.ok || !data.success) {
+        searchResults.innerHTML = "<p>Error searching products.</p>";
+        return;
+    }
+
+    if (data.products.length === 0) {
+        searchResults.innerHTML = "<p>No products found.</p>";
+        return;
+    }
 });
 
 productForm.addEventListener("submit", async function (e) {
@@ -44,11 +68,11 @@ productForm.addEventListener("submit", async function (e) {
         productData._id = productIdInput.value;
     }
 
-    let url = "http://localhost:3000/api/admin/products/create-product"; //makes new product if the ID is blank
+    let url = `${API_BASE}/api/admin/products/create-product`; //makes new product if the ID is blank
     let method = "POST";
 
     if (productIdInput.value !== "") { //edits existing product if ID exists
-        url = "http://localhost:3000/api/admin/products/update-product";
+        url = `${API_BASE}/api/admin/products/update-product`;
         method = "PUT";
     }
 
@@ -85,3 +109,26 @@ imageInput.addEventListener("input", () => { //Makes the images display whenever
     imagePreview.appendChild(img);
   });
 });
+
+async function checkLoginAccess() {
+    try {
+        const response = await fetch(`${API_BASE}/api/auth/check`, {
+            method: "GET",
+            credentials: "include"
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            document.body.innerHTML = "<h2>Access Denied. Please login first.</h2>";
+            return;
+        }
+
+        console.log("Login confirmed");
+    } catch (error) {
+        console.error(error);
+        document.body.innerHTML = "<h2>Error when checking login status.</h2>";
+    }
+}
+
+checkLoginAccess();

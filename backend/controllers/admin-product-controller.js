@@ -182,10 +182,15 @@ const deleteProduct = async (req, res) => {
     }
 }
 
-const searchProducts = async (req, res) => {
+const searchProducts = async (req, res) => { //works with both names and keywords
     try {
         const query = req.query.query || "";
-        const products = await Product.find({name: { $regex: query, $options: "i" }});
+        const products = await Product.find({
+            $or: [
+                { name: { $regex: query, $options: "i" } },
+                { keywords: { $elemMatch: { $regex: query, $options: "i" } } }
+            ]
+        });
         res.json({success: true,products});
     } catch (error) {
         res.status(500).json({

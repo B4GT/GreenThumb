@@ -8,7 +8,7 @@ const router = express.Router()
 
 const adminMiddleware = require('../middleware/admin-middleware')
 const authMiddleware = require('../middleware/auth-middleware');
-const { addProduct, getProduct, getProducts, deleteProduct, updateProduct, searchProduct  } = require('../controllers/admin-product-controller');
+const { addProduct, getProduct, getProducts, deleteProduct, updateProduct, searchProducts  } = require('../controllers/admin-product-controller');
 
 
 router.post("/create-product", authMiddleware , adminMiddleware, addProduct)
