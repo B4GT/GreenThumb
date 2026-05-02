@@ -82,6 +82,28 @@ fetch('../JSON/Products.json')
 
             document.querySelector('.product-description').innerText = product.short_description
 
+            addToCartBtn.addEventListener("click", () => {
+                const qty = parseInt(quantity.value);
+
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                let existingItem = cart.find(item => item.name === product.name);
+
+                if (existingItem) {
+                    existingItem.quantity += qty;
+                } else {
+                    cart.push({
+                        name: product.name,
+                        price: parseFloat(product.price),
+                        quantity: qty
+                    });
+                }
+
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+                alert("Added to cart!");
+            });
+
 
 
         }
