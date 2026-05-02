@@ -163,9 +163,6 @@ button.addEventListener("click", () => {
         // Update image
         image.src = currentPlant.image;
 
-	// Add border styling for generated plants
-	image.classList.add("generated");
-
         // Clear previous name content
         name.textContent = "";
 
