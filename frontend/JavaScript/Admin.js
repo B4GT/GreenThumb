@@ -3,6 +3,8 @@ const API_BASE = "http://localhost:3000";
 const searchForm = document.getElementById("searchForm");
 const productForm = document.getElementById("productForm");
 const searchResults = document.getElementById("searchResults");
+const productSelect = document.getElementById("productSelect");
+const statusMessage = document.getElementById("statusMessage");
 
 const productIdInput = document.getElementById("productId");
 const nameInput = document.getElementById("name");
@@ -13,6 +15,12 @@ const keyWordsInput = document.getElementById("keyWords");
 const categoryInput = document.getElementById("category");
 const stockInput = document.getElementById("stock");
 const imagePreview = document.getElementById("imagePreview");
+const clearFormButton = document.getElementById("clearFormButton");
+const displayProductIdInput = document.getElementById("displayProductId");
+const ratingInput = document.getElementById("rating");
+const unitsSoldInput = document.getElementById("unitsSold");
+
+let currentSearchProducts = [];
 
 searchForm.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -27,17 +35,28 @@ searchForm.addEventListener("submit", async function (e) {
     const data = await response.json();
     console.log(data);
 
-    searchResults.innerHTML = "";
+    productSelect.innerHTML = "";
 
     if (!response.ok || !data.success) {
-        searchResults.innerHTML = "<p>Error searching products.</p>";
+        productSelect.innerHTML = `<option value="">Error searching products</option>`;
         return;
     }
 
-    if (data.products.length === 0) {
-        searchResults.innerHTML = "<p>No products found.</p>";
+    currentSearchProducts = data.products;
+
+    if (currentSearchProducts.length === 0) {
+        productSelect.innerHTML = `<option value="">No products found</option>`;
         return;
     }
+
+    productSelect.innerHTML = `<option value="">Select a product</option>`;
+
+    currentSearchProducts.forEach(product => {
+        const option = document.createElement("option");
+        option.value = product._id;
+        option.textContent = product.name;
+        productSelect.appendChild(option);
+    });
 });
 
 productForm.addEventListener("submit", async function (e) {
@@ -87,7 +106,71 @@ productForm.addEventListener("submit", async function (e) {
 
     const data = await response.json();
     console.log(data);
+
+    if (!response.ok || !data.success) {
+        statusMessage.textContent = data.message || "Could not save product.";
+        return;
+    }
+
+    if (productIdInput.value !== "") {
+        statusMessage.textContent = "Product updated successfully.";
+    } else {
+        statusMessage.textContent = "Product created successfully.";
+    }
 });
+
+productSelect.addEventListener("change", function () {
+    const selectedProductId = productSelect.value;
+
+    if (selectedProductId === "") {
+        return;
+    }
+
+    const selectedProduct = currentSearchProducts.find(product => product._id === selectedProductId);
+
+    if (!selectedProduct) {
+        return;
+    }
+
+    productIdInput.value = selectedProduct._id || "";
+    nameInput.value = selectedProduct.name || "";
+    descriptionInput.value = selectedProduct.description || "";
+    imageInput.value = selectedProduct.images ? selectedProduct.images.join(", ") : "";
+    priceInput.value = selectedProduct.price || "";
+    keyWordsInput.value = selectedProduct.keywords ? selectedProduct.keywords.join(", ") : "";
+    categoryInput.value = selectedProduct.category || "";
+    stockInput.value = selectedProduct.stock || 0;
+    displayProductIdInput.value = selectedProduct._id || "";
+    ratingInput.value = selectedProduct.rating || 0;
+    unitsSoldInput.value = selectedProduct.unitsSold || 0;
+
+    imageInput.dispatchEvent(new Event("input"));
+
+    statusMessage.textContent = "Product loaded. Saving will update this existing product.";
+});
+
+
+clearFormButton.addEventListener("click", function () {
+    clearProductForm();
+});
+
+function clearProductForm() {
+    productIdInput.value = "";
+    nameInput.value = "";
+    descriptionInput.value = "";
+    imageInput.value = "";
+    priceInput.value = "";
+    keyWordsInput.value = "";
+    categoryInput.value = "";
+    stockInput.value = 0;
+    imagePreview.innerHTML = "";
+    productSelect.value = "";
+    displayProductIdInput.value = "";
+    ratingInput.value = "";
+    unitsSoldInput.value = "";
+
+    statusMessage.textContent = "Form cleared. Saving will create a new product.";
+}
 
 imageInput.addEventListener("input", () => { //Makes the images display whenever the URL is entered (I can try to implement an upload system later)
   const urls = imageInput.value
@@ -130,5 +213,7 @@ async function checkLoginAccess() {
         document.body.innerHTML = "<h2>Error when checking login status.</h2>";
     }
 }
+
+
 
 checkLoginAccess();

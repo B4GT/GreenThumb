@@ -20,11 +20,17 @@
     <p>This will search by both product name and keywords</p>       
   </form>
 
-  <div id="searchResults"></div>
+  <div id="searchResults">
+    <label for="productSelect">Search Results:</label>
+    <select id="productSelect">
+      <option value="">No product selected</option>
+  </select>
+</div>
 
   <form id="productForm">
     <p>The product selected from your search results will have its data written below.</p>
     <p>Edit the fields and save to edit products. To add a new product, enter a new product name.</p>
+    <p>NOTE: productID, rating, and units sold can't be edited here. However, they can be directly edited in the database.</p>
 
     <input type="hidden" id="productId" name="productId">
 
@@ -68,7 +74,23 @@
       <input type="number" id="stock" name="stock" min="0" value="0" required>
     </div>
 
+    <div class="form-group">
+      <label for="displayProductId">Product ID:</label>
+      <input type="text" id="displayProductId" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating:</label>
+      <input type="text" id="rating" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="unitsSold">Units Sold:</label>
+      <input type="text" id="unitsSold" readonly>
+    </div>
+
     <button type="submit">Save Product</button>
+    <button type="button" id="clearFormButton">Clear Form / New Product</button>
     <p id="statusMessage"></p>
   </form>
 
