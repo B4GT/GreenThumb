@@ -22,13 +22,14 @@ body {
    NAVBAR
    ========================= */
 .navbar {
+  position: fixed; top: 15px; left: 20px; right: 20px; z-index: 1000;
   display: grid;
   grid-template-columns: 80px 1fr 80px;
   align-items: center;
   border: 2px solid #444;
   border-radius: 25px;
   padding: 10px 15px;
-  background-color: #fefcf8;
+  background-color: #eef5ea;
 }
 
 .navLinks {
@@ -100,7 +101,8 @@ body {
   border: 2px solid #444;
   border-radius: 25px;
   padding: 40px 20px;
-  background-color: white;
+  background-color: #eef5ea;
+  margin-top: 100px;
 }
 
 .hero-text {
@@ -207,7 +209,7 @@ body {
 
 /* Give these boxes the exact same "Hero" look */
 .unique, .values {
-  background-color: white;      /* White background */
+  background-color: #eef5ea;
   border: 2px solid #444;       /* Dark border like the Hero */
   border-radius: 25px;          /* Rounded corners */
   padding: 30px;                /* Padding inside the boxes */
@@ -249,7 +251,7 @@ body {
 
 /* Give these boxes the exact same "Hero" look */
 .sustainability, .tracker {
-  background-color: white;
+  background-color: #eef5ea;
   border: 2px solid #444;
   border-radius: 25px;
   padding: 30px;
