@@ -258,6 +258,7 @@ body {
   gap: 30px;
 }
 
+/*
 .info-box {
   border: 2px solid #444;
   border-radius: 25px;
@@ -270,6 +271,18 @@ body {
   text-align: center;
   font-size: 2rem;
   background-color: white;
+  padding: 20px;
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+*/
+
+.info-box {
+  border: 2px solid #444;
+  border-radius: 25px;
+  background-color: #c0dd97;
   padding: 20px;
   min-height: 550px;
   display: flex;
