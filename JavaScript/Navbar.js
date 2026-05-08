@@ -18,7 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const navHTML = `
     <nav class="navbar">
-      <div class="logo">LOGO</div>
+      
+      <div class="logo">
+        <a href="index.html">
+	        <img src="../IMGS/logo.png" alt="Green Thumb Logo">
+	      </a>
+      </div>
+
       <div class="navLinks">
         <a href="index.html" data-page="index.html">Home</a>
         <a href="Shop.html" data-page="Shop.html">Shop</a>

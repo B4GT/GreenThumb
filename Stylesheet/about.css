@@ -21,30 +21,42 @@ body {
 /* =========================
    NAVBAR
    ========================= */
+/* NAVBAR */
 .navbar {
-  position: fixed; top: 15px; left: 20px; right: 20px; z-index: 1000;
+  position: fixed; 
+  top: -5px; 
+  left: 0; 
+  right: 0; 
+  z-index: 100;
   display: grid;
   grid-template-columns: 80px 1fr 80px;
   align-items: center;
-  border: 2px solid #444;
-  border-radius: 25px;
-  padding: 10px 15px;
-  background-color: #eef5ea;
+  padding: 12px 20px;
+  border-bottom: 1.5px solid #c2deba;
+  background-color: #fefcf8;
+  box-shadow: 0 2px 12px rgba(45,90,39,0.08);
 }
 
 .navLinks {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 12px 20px;
+  box-shadow: 0 2px 12px rgba(45, 90, 39, 0, 0.08);
 }
 
 .navLinks a {
-  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
   font-weight: 600;
   text-decoration: none;
   color: #6b8f63;
   padding: 6px 16px;
   border-radius: 20px;
+  transition: background 0.2s, color 0.2;
+  /* font-size: 1.1rem;  old font size */
 }
 
 .navLinks a:hover {
@@ -59,20 +71,22 @@ body {
 
 .nav-icons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  justify-self: end;
+  gap: 12px;
 }
 
-.nav-icons .material-symbols-outlined {
+.nav-icons a {
+  text-decoration: none;
+  font-size: 1.2rem;
   color: black;
 }
 
-/* =========================
-   NAVBAR LOGO
-   ========================= */
-
+/* NAVBAR LOGO */
 .logo {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   overflow: visible;
   display: flex;
   align-items: center;

@@ -11,21 +11,6 @@ body {
   padding: 20px;
 }
 
-#scrollBtn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 30px;
-  font-size: 14px;
-  border: none;
-  outline: none;
-  background-color: red;
-  color: white;
-  cursor: pointer;
-  padding: 5px;
-  border-radius: 4px;
-}
-
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -34,26 +19,25 @@ body {
 
 /* NAVBAR */
 .navbar {
-  width: 100%;
+  position: fixed; 
+  top: -5px; 
+  left: 0; 
+  right: 0; 
+  z-index: 100;
   display: grid;
   grid-template-columns: 80px 1fr 80px;
   align-items: center;
-  border: 2px solid #444;
-  border-radius: 25px;
-  padding: 10px 15px;
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100; <-- if we plan on making it flat along the top */
+  padding: 12px 20px;
+  border-bottom: 1.5px solid #c2deba;
   background-color: #fefcf8;
-  min-height: 60px;
+  box-shadow: 0 2px 12px rgba(45,90,39,0.08);
 }
 
 .navLinks {
   display: flex;
   justify-content: center;
-  gap: 6px;
+  align-items: center;
+  gap: 18px;
   flex-wrap: wrap;
   padding: 12px 20px;
   box-shadow: 0 2px 12px rgba(45, 90, 39, 0, 0.08);
@@ -83,7 +67,9 @@ body {
 
 .nav-icons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  justify-self: end;
   gap: 12px;
 }
 
@@ -95,8 +81,8 @@ body {
 
 /* NAVBAR LOGO */
 .logo {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   overflow: visible;
   display: flex;
   align-items: center;
