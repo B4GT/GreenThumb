@@ -22,7 +22,7 @@
 
     .navbar {
       position: fixed; 
-      top: -5px; 
+      top: 0px; 
       left: 0; 
       right: 0; 
       z-index: 100;
@@ -45,10 +45,23 @@
       box-shadow: 0 2px 12px rgba(45, 90, 39, 0, 0.08);
     }
 
+    .navLinks a,
+    .nav-icons a {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #2e8b57;
+      padding: 6px 16px;
+      border-radius: 20px;
+      transition: background 0.2s, color 0.2;
+      /* font-size: 1.1rem;  old font size */
+    }
+
     .navbar a {
       font-family: 'Nunito', sans-serif;
       font-size: 13px; font-weight: 600;
-      color: var(--muted);
+      color: #2e8b57;
       text-decoration: none;
       padding: 6px 16px;
       border-radius: 20px;
@@ -72,8 +85,6 @@
     }
 
     .nav-icons a {
-      text-decoration: none;
-      font-size: 1.2rem;
       color: black;
     }
 

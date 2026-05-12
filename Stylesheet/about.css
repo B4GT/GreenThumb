@@ -24,7 +24,7 @@ body {
 /* NAVBAR */
 .navbar {
   position: fixed; 
-  top: -5px; 
+  top: 0px; 
   left: 0; 
   right: 0; 
   z-index: 100;
@@ -37,6 +37,11 @@ body {
   box-shadow: 0 2px 12px rgba(45,90,39,0.08);
 }
 
+.navbar a:hover {
+  background-color: #eaf3de;
+  color: #3b6d11;
+}
+
 .navLinks {
   display: flex;
   justify-content: center;
@@ -47,21 +52,17 @@ body {
   box-shadow: 0 2px 12px rgba(45, 90, 39, 0, 0.08);
 }
 
-.navLinks a {
+.navLinks a,
+.nav-icons a {
   font-family: 'Nunito', sans-serif;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  color: #6b8f63;
+  color: #2e8b57;
   padding: 6px 16px;
   border-radius: 20px;
   transition: background 0.2s, color 0.2;
   /* font-size: 1.1rem;  old font size */
-}
-
-.navLinks a:hover {
-  background-color: #eaf3de;
-  color: #3b6d11;
 }
 
 .navLinks a.active {
@@ -78,8 +79,6 @@ body {
 }
 
 .nav-icons a {
-  text-decoration: none;
-  font-size: 1.2rem;
   color: black;
 }
 

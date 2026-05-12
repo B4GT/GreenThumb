@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const stylesheets = [
         '../Stylesheet/Navbar.css',
-        'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart'
+        'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart',
+        'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=Nunito:wght@300;400;500;600&display=swap'
     ];
 
     stylesheets.forEach(href => {
