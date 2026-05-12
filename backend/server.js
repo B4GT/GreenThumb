@@ -11,6 +11,7 @@ const authRoutes = require('./routes/auth-route')
 const orderRoutes = require('./routes/order-route')
 
 const app = express()
+app.set("trust proxy", 1);
 
 connectToDB()
 

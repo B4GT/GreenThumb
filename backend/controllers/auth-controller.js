@@ -70,14 +70,14 @@ const loginUser = async (req, res) => {
         }, process.env.JWT_SECRET_KEY, {
             expiresIn: '1h'
         })
-
-        res.cookie('access_token', accessToken, {
+        
+        res.cookie("access_token", token, {
             httpOnly: true,
-            secure: false,      // set to true in production
-            sameSite: 'lax',
-            maxAge: 3600000
-        })
-
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            maxAge: 86400000
+        });
+        
         res.status(200).json({
             success: true,
             message: "logged in successfully",
