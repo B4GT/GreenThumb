@@ -1,3 +1,5 @@
+const API_BASE = "https://greenthumb-n49m.onrender.com";
+
 const loginForm = document.getElementById("loginForm");
 const message = document.getElementById("message");
 
@@ -9,7 +11,7 @@ loginForm.addEventListener("submit", async (event) => {
 
   try {
     message.textContent = ""
-    const loginResponse = await fetch("http://localhost:3000/api/auth/login", {
+    const loginResponse = await fetch(`${API_BASE}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -27,7 +29,7 @@ loginForm.addEventListener("submit", async (event) => {
         return;
       }
 
-      const checkResponse = await fetch("http://localhost:3000/api/auth/check", {
+      const checkResponse = await fetch(`${API_BASE}/api/auth/check`, {
         method: "GET",
         credentials: "include"
       });

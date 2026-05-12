@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:3000";
+const API_BASE = "https://greenthumb-n49m.onrender.com";
 
 const searchForm = document.getElementById("searchForm");
 const productForm = document.getElementById("productForm");
