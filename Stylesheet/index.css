@@ -8,7 +8,11 @@ body {
   font-family: 'Nunito', sans-serif;
   background-color: #1a3a16;
   color: #2f3a2f;
+<<<<<<< HEAD
   padding-top: 50px;
+=======
+  padding: 100px 20px 60px;
+>>>>>>> 4ea06c784b5980ea05ceadbd7e57e13c770320b1
 }
 
 .grid-container {

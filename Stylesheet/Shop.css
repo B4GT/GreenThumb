@@ -8,7 +8,7 @@ body {
   font-family: 'Nunito', sans-serif;
   background-color: #eef5ea;
   color: #2f3a2f;
-  padding: 20px;
+  padding: 100px 20px 60px;
   min-height: 100vh;
 }
 .grid {

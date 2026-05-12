@@ -8,7 +8,7 @@ body {
   font-family: 'Nunito', sans-serif;
   background-color: #1a3a16;
   color: #2f3a2f;
-  padding: 20px;
+  padding: 100px 20px 60px;
 }
 
 /* PAGE LAYOUT */
@@ -21,7 +21,6 @@ body {
 /* =========================
    NAVBAR
    ========================= */
-/* NAVBAR */
 .navbar {
   position: fixed; 
   top: 0px; 
