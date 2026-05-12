@@ -70,8 +70,8 @@ const loginUser = async (req, res) => {
         }, process.env.JWT_SECRET_KEY, {
             expiresIn: '1h'
         })
-        
-        res.cookie("access_token", token, {
+
+        res.cookie("access_token", accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
