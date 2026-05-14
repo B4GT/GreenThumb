@@ -1,0 +1,75 @@
+[33m159465e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mDaniel[m[33m)[m Added basic ability to write to the database from the browser. There is an entry in the database that was made through the site.
+[33md2e9452[m[33m ([m[1;31morigin/Daniel[m[33m)[m pushing files for admin loging that weren't properly pushed before. Also changed .env again (though it shouldn't be on Github
+[33mba2037e[m pushing files that weren't properly pushed yesterday. Also changed I changed the .env, which shouldn't be uploaded, since I accidentally uploaded it before
+[33m3b94cf3[m Added my work on the backend. There is a functional login page using an example user I made, and it function well through the VSCode Thunder Client VSCode extension, but I still need to make a page to do it through the browser
+[33m6d4d9d6[m[33m ([m[1;32mmain[m[33m)[m Added my work towards the admin login and product editor. Right now, there is a login page using a MongoDB database, and I have successfully edited the database using the Thunder Client VSCode extension, but I still need to add a page to do that from the browser
+[33m4078350[m[33m ([m[1;31morigin/backend[m[33m, [m[1;32mbackend[m[33m)[m remove frontend files from backend branch
+[33mdeb11f9[m added backend stuff
+[33m112dc53[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge branch 'StylingHome'
+[33m759a5b6[m Merge branch 'main' of https://github.com/B4GT/GreenThumb into StylingHome
+[33mc1080cf[m Storage changes
+[33mce4178f[m[33m ([m[1;31morigin/StylingHome[m[33m)[m Updated Styling of The Home page to match with what the sketch image displayed. In addition, did some styling that is similar to the review page.
+[33md0dee17[m Debugged picture issue and slightly changed styling
+[33m356d687[m Merge branch 'StylingHome' of https://github.com/B4GT/GreenThumb into StylingHome
+[33m6611726[m Readme for some info on what was changed in my merging. This can be deleted later if you don't need it then.
+[33m7c73a03[m Merge branch 'StylingHome' of https://github.com/B4GT/GreenThumb into StylingHome
+[33ma801184[m Integrate dynamic best sellers into new homepage layout
+[33m4ef5b51[m merged top product display with new homepage
+[33m2af6a29[m Updated the Shopping Cart Icon
+[33mec0eef1[m Merge branch 'main' of https://github.com/B4GT/GreenThumb into StylingHome
+[33m9276f79[m Finished the Styling of The Home Page. Just need to fill empty or incomplete areas
+[33m8e6e556[m Merge branch 'main' of https://github.com/B4GT/GreenThumb
+[33m1f09804[m Slightly changed styling of generator
+[33m08b18f4[m Added Reviews.json and implementing JSON review storage
+[33mb381e9a[m merged my JSON with the edited one on Main. this keeps all of the information from both
+[33mfbff962[m Merge pull request #4 from B4GT/individual-item-system
+[33m7169d1e[m Added more payment options and more specific user personal information
+[33m17dc5b9[m[33m ([m[1;31morigin/individual-item-system[m[33m)[m Merge pull request #3 from stevenslouis001/individual-item-system
+[33m3783773[m added support for individual items, fixed shop stuff, updated JSON
+[33m6412722[m Merge branch 'main' of https://github.com/B4GT/GreenThumb
+[33m07611ac[m Adjusted styling for plant generator
+[33m6791225[m Added Nav bar
+[33m1e386f9[m Styling of the Home page is in progress. Not complete, but getting there
+[33mc8af213[m Added localstorage to keep reviews after refresh
+[33m499ccb3[m Fix casing of CSS and HTML file references
+[33m156d60d[m Merge pull request #2 from B4GT/StylingHome
+[33me336bf1[m Fixed plant container jumping
+[33m9123207[m Merge branch 'main' of https://github.com/B4GT/GreenThumb
+[33m522833a[m Updated plant images and scripts
+[33m68767a9[m Added a few divs. Still finishing up the styling of the homepage.
+[33m892615a[m Added first version of Checkout.html
+[33m4dd8a33[m Update Cart.html
+[33m8c88da8[m[33m ([m[1;31morigin/plant-generator[m[33m)[m Update About.html
+[33md159c84[m Update Review.html
+[33mf869002[m fixed issue with extra folder
+[33m75cc8e7[m Merge branch 'main' of https://github.com/B4GT/GreenThumb
+[33mfb145a4[m Added basic search functionality to search bar on home page with JavaScript and an example JSON file containing potential products. Search checks for product name and keywords, with basic typo correction
+[33m6652acc[m Merge branch 'main' of https://github.com/B4GT/GreenThumb
+[33m295ae56[m created basic search functionality with JavaScript and a JSON of example products. The Search checks for both product names and key words, with some typo correction. Uses search bar on home page, and prints to console
+[33mfcebfc6[m Added basic search functionality to search bar on home page with JavaScript and an example JSON file containing potential products. Search checks for product name and keywords, with basic typo correction
+[33m0656d73[m Moved Stevens ShopPage files into their respective servers. Still have his original ShopPage folder. Will clean up later
+[33m3618a13[m Moved the Cart.css file into the stylesheet folder
+[33m8a862a7[m added cart.css
+[33mcbf2325[m Create cart.css
+[33md09f6fe[m Merge pull request #1 from stevenslouis001/shop-page
+[33m9fd50fd[m added shop page stuff
+[33m3b08579[m Fixed Errors with .search comment. Also fixed a linking issue for the cart webpage
+[33m74cd4c9[m Created a template review table for the customer review page. Outside of that it is rather plain. Javascript was used. Needs some tweaks
+[33ma716eb3[m fixed how my comment was written
+[33m8d8c03b[m Comment about moving style to stylesheet later
+[33m4e67bc6[m Changed .html destinations for nav bar
+[33m0bc2cb3[m Changed comment to show new html name
+[33md6442f0[m Updated Cart.html structure
+[33m1f0367e[m Added my code
+[33m0e6a2f4[m Finished editing plant generator files
+[33m5f09248[m Added RandomPlantGenerator Folder
+[33ma907864[m Delete Password
+[33mc00a5d9[m Delete To
+[33meb4403c[m Delete Username
+[33m798f274[m Delete error:
+[33m0aad99c[m Delete hint:
+[33mcf64a41[m Merge branch 'main' of https://github.com/B4GT/GreenThumb Merging local RandomPlant with GreenThumb repo
+[33m4a14b59[m Update RandomPlant generator
+[33mc87a080[m Random Plant Generator Initial
+[33mf84868a[m Still Testing
+[33m7a6b3ee[m Testing Upload Of Current Files

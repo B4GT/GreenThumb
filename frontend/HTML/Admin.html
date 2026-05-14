@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Add Product</title>
+
+  <style>
+    form {
+      margin-bottom: 50px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    label {
+      width: 130px;
+      margin-top: 3px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 400px;
+      max-width: 90%;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+    }
+
+    input,
+    select {
+      height: 22px;
+      padding: 1px 4px;
+    }
+
+    textarea {
+      height: 22px;
+      min-height: 22px;
+      padding: 1px 4px;
+      resize: vertical;
+      overflow: hidden;
+      line-height: 18px;
+    }
+
+    #description {
+      height: 44px;
+      min-height: 44px;
+    }
+
+    button {
+      margin-top: 5px;
+    }
+
+    #searchResults {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="searchForm">
+    <div class="form-group">
+      <label for="query">Search for Product:</label>
+      <input type="text" id="query" name="query">
+    </div>
+
+    <button type="submit">Search</button>
+    <p>This will search by both product name and keywords</p>
+  </form>
+
+  <div id="searchResults">
+    <div class="form-group">
+      <label for="productSelect">Search Results:</label>
+      <select id="productSelect">
+        <option value="">No product selected</option>
+      </select>
+    </div>
+  </div>
+
+  <form id="productForm">
+    <p>The product selected from your search results will have its data written below.</p>
+    <p>Edit the fields and save to edit products. To add a new product, enter information without selecting an existing product.</p>
+    <p>NOTE: productID, rating, and units sold can't be edited here. However, they can be directly edited in the database.</p>
+    <p></p>
+
+    <input type="hidden" id="productId" name="productId">
+
+    <div class="form-group">
+      <label for="name">Product Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="imageInput">Image Links:</label>
+      <textarea id="imageInput" name="imageInput" placeholder="Paste image URLs here, separated by commas"></textarea>
+    </div>
+
+    <div id="imagePreviewSection">
+      <p>Image preview:</p>
+      <div id="imagePreview"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" step="0.01">
+    </div>
+
+    <div class="form-group">
+      <label for="keyWords">Key Words:</label>
+      <textarea id="keyWords" name="keyWords"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <input type="text" id="category" name="category" required>
+    </div>
+
+    <div class="form-group">
+      <label for="stock">Stock:</label>
+      <input type="number" id="stock" name="stock" min="0" value="0" required>
+    </div>
+
+    <div class="form-group">
+      <label for="displayProductId">Product ID:</label>
+      <input type="text" id="displayProductId" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating:</label>
+      <input type="text" id="rating" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="unitsSold">Units Sold:</label>
+      <input type="text" id="unitsSold" readonly>
+    </div>
+
+    <button type="submit">Save Product</button>
+    <button type="button" id="clearFormButton">Clear Form / New Product</button>
+    <p id="statusMessage"></p>
+  </form>
+
+  <script src="../JavaScript/Admin.js"></script>
+
+  <script>
+    function autoResizeTextarea(textarea) {
+      textarea.style.height = "22px";
+
+      if (textarea.id === "description") {
+        textarea.style.height = "44px";
+      }
+
+      textarea.style.height = textarea.scrollHeight + "px";
+    }
+
+    document.querySelectorAll("textarea").forEach(function (textarea) {
+      textarea.addEventListener("input", function () {
+        autoResizeTextarea(textarea);
+      });
+    });
+  </script>
+</body>
+
+</html>
