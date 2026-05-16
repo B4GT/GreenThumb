@@ -30,6 +30,14 @@ cs username: elanza05
 
 <body>
 
+  <!-- =========================================
+       BACK TO TOP BUTTON
+       Appears after scrolling down a certain distance
+       Scrolls user back to top when clicked
+       ========================================= -->
+
+  <button onclick="topFunction()" id="goUP" title="Go to top">^</button>
+
 <!-- =========================================
      PAGE WRAPPER (GRID LAYOUT CONTAINER)
      Holds all page sections
@@ -199,6 +207,33 @@ cs username: elanza05
         </p>
     </div>
   </section>
+
+  <!-- =========================================
+       BACK TO TOP BUTTON SCRIPT
+       Controls visibility and functionality of the "Go to top" button
+       ========================================= -->
+
+  <script>
+    // Get the button
+    let mybutton = document.getElementById("goUP");
+
+    // When the user scrolls down 500px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+  </script>
 
 </body>
 </html>
