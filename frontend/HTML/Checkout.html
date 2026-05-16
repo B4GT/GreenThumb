@@ -107,6 +107,9 @@
 
 <p id="confirmation"></p>
 
+<!-- EXTERNAL IMPACT JAVASCRIPT LINK -->
+<script src="../Scripts/impact.js"></script>
+
 <script>
 const paymentOptions = document.querySelectorAll('input[name="payment"]');
 const cardDetails = document.getElementById('card-details');
@@ -124,9 +127,22 @@ paymentOptions.forEach(option => {
   });
 });
 
+<!-- IMPACT TRACKER EVENT LISTENER ADDITION -->
 document.getElementById('payment-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  document.getElementById('confirmation').innerText = "Purchase completed successfully!";
+
+  <!-- Calculate the impact and clear out the active cart -->
+  if (typeof processPurchaseImpact === "function") {
+      processPurchaseImpact();
+  }
+
+  <!-- Show completed purchse message -->
+  document.getElementById('confirmation').innerText = "Purchase completed successfully! Redirecting to view your impact...";
+
+  <!-- Redirect user to the About Page -->
+  setTimeout(() => {
+      window.location.href = "About.html";
+  }, 2000);
 });
 </script>
 

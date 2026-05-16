@@ -1,3 +1,10 @@
+<!--
+filename: index.html
+author: Kameron D./ Evan L.
+student id last four: 3646/ 8804
+cs username:
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +14,11 @@
   <link rel="stylesheet" href="../Stylesheet/index.css">
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart" />
+
+  <!-- EXTERNAL RANDOM PLANT GENERATOR STYLESHEET LINK -->
   <link rel="stylesheet" href="../Stylesheet/RandomPlantGenerator.css">
+
+  <!-- EXTERNAL ECO FACT GENERATOR STYLESHEET LINK -->
   <link rel="stylesheet" href="../Stylesheet/EcoFacts.css">
 </head>
 <body>
@@ -50,6 +61,7 @@
         </div>
       </div>
 
+      <!-- HEADER IMAGE SECTION -->
       <div class="plantImg">
         <img id="headerImage" src="../IMGS/Succulents/header1.jpg" alt="Header">
       </div>
@@ -57,39 +69,70 @@
 
     <section class="best-sellers">
       <h2>Shop Our Best Sellers</h2>
+
+      <!-- Populated dynamically by Search.js -->
       <div id="top-products" class="product-grid"></div>
     </section>
 
+    <!-- =========================================
+	 ECO FACT & PLANT GENERATOR CONTAINER
+	 Contains:
+	 - Eco fact generator
+	 - Random plant generator
+	 ========================================= -->
     <section class="bottom-grid">
+
+      <!-- ECO FACT GENERATOR SECTION -->
       <div class="info-box">
-	<div class="generator" id="eco-facts-box"> <h2>🍃 Eco Fun Facts</h2>
+	<div class="generator" id="eco-facts-box">
+
+	  <!-- ECO FACT GENERATOR HEADER -->
+          <h2>🍃 Eco Fun Facts</h2>
+
+  	  <!-- FACT DISPLAY SECTION -->
 	  <div class="fact-display">
+
+	    <!-- BACK NAVIGATION BUTTON -->
             <button id="prevFact" class="nav-btn">❮</button>
             
+	    <!-- TEXT CONTAINER -->
             <div class="text-container">
                 <p id="factText"></p>
             </div>
             
+	    <!-- FORWARD NAVIGATION BUTTON -->
             <button id="nextFact" class="nav-btn">❯</button>
           </div>
 
+	  <!-- SOURCE LINK BUTTON -->
 	  <a id="sourceLink" href="#" target="_blank">
 	    <button id="sourceBtn">Read about it here!</button>
 	  </a>
 	</div>
       </div>
 
+      <!-- RANDOM PLANT GENERATOR SECTION -->
       <div class="info-box">
 
-	<div class="generator" id="plant-gen-box"> <h2>Random Plant Generator</h2>
+	<div class="generator" id="plant-gen-box">
 
+	  <!-- RANDOM PLANT GENERATOR HEADER -->
+	  <h2>Random Plant Generator</h2>
+
+	  <!-- PLANT IMAGE DISPLAY -->
 	  <div class="plant-display">
+
+	    <!-- LOGO BY DEFUALT -->
             <img id="plantImage" src="../IMGS/logo.png" alt="Plant">
     	  </div>
 
+	  <!-- PLANT NAME TEXT -->
     	  <h3 id="plantName">Click Generate</h3>
+
+	    <!-- PLANT DESCRIPTION TEXT -->
     	    <p id="plantDescription">Discover a plant perfect for your space!</p>
 
+	  <!-- GENERATE PLANT & SHOP LINK  SECTION -->
     	  <div class="generator-controls">
       	    <button id="generateBtn">Generate Plant</button>
       	    <button id="productBtn">View Product</button>
@@ -101,7 +144,12 @@
   </div>
 
   <script src="../JavaScript/Search.js"></script>
+
+  <!-- EXTERNAL RANDOM PLANT GENERATOR JAVASCRIPT LINK -->
   <script src="../JavaScript/RandomPlantGenerator.js"></script>
+
+  <!-- EXTERNAL ECO FACT GENERATOR JAVASCRIPT LINK -->
   <script src="../JavaScript/EcoFacts.js"></script>
+
 </body>
 </html>

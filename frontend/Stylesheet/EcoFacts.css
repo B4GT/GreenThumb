@@ -1,10 +1,14 @@
 /*
-filename: facts.css
+filename: EcoFacts.css
 author: Evan Lanza
 student id last four: 8804
 cs username: elanza05
 */
 
+/* =========================================
+   Eco FACT GENERATOR CONTAINER
+   The main content area
+   ========================================= */
 #eco-facts-box {
     text-align: center;
     width: 100%;
@@ -16,14 +20,17 @@ cs username: elanza05
     color: #3B6D11;
     border-radius: 25px;
     border: 10px solid #c0dd97;
+    /* Ensures padding/border don't increase the width */
     box-sizing: border-box;
     position: relative;
+    /* Flexbox used to stack elements vertically */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
 
+/* GENERATOR HEADING */
 #eco-facts-box h2 {
     margin-top: 10px;
     margin-bottom: 0;
@@ -31,6 +38,11 @@ cs username: elanza05
     font-size: 1.5rem;
 }
 
+/* =========================================
+   FACT DISPLAY AREA
+   The middle section containing the
+   arrows and the text content
+   ========================================= */
 .fact-display {
     display: flex;
     align-items: center;
@@ -40,6 +52,7 @@ cs username: elanza05
     margin-top: 20px;
 }
 
+/* WRAPPER FOR THE FACT TEXT */
 .text-container {
     flex: 1;
     padding: 10px;
@@ -48,15 +61,20 @@ cs username: elanza05
     justify-content: center;
 }
 
+/* INDIVIDUAL FACT TEXT STYLING */
 #factText {
     font-size: 1.15rem;
     line-height: 1.5;
+    /* Smooth transition for JavaScript-triggered changes */
     transition: opacity 0.5s ease;
     font-style: italic;
     margin: 0;
 }
 
-/* Arrow Styling */
+/* =========================================
+   NAVIGATION BUTTONS
+   Styling for the left/right arrows
+   ========================================= */
 #eco-facts-box .nav-btn {
     background: none;
     border: none;
@@ -65,22 +83,30 @@ cs username: elanza05
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 10px;
+    /* Hidden by defualt */
     opacity: 0;
+    /* Prevents text highlighting when clicking rapidly */
     user-select: none;
 }
 
+/* HOVER EFFECT TO REVEAL ARROWS */
 #eco-facts-box:hover .nav-btn {
     opacity: 1;
 }
 
+/* HOVER EFFECT FOR ARROWS */
 .nav-btn:hover {
     color: #1a3a16;
     transform: scale(1.2);
 }
 
-/* Source Link & Button Styling */
+/* =========================================
+   SOURCE LINK & BUTTON
+   Positioned at the bottom of the card
+   ========================================= */
 #sourceLink {
     text-decoration: none;
+    /* Sticks the link to the bottom */
     position: absolute;
     bottom: 30px;
     height: 45px;
@@ -89,6 +115,7 @@ cs username: elanza05
     width: 100%;
 }
 
+/* "VIEW SOURCE" BUTTON STYLING */
 #sourceBtn {
     border-radius: 25px;
     padding: 10px 15px;
@@ -98,9 +125,9 @@ cs username: elanza05
     color: #3B6D11;
     border: 2px solid #3B6D11;
     transition: all 0.3s ease;
+    /* Hidden by default */
     opacity: 0;
     visibility: hidden;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -108,17 +135,22 @@ cs username: elanza05
     line-height: 1;
 }
 
+/* HOVER EFFECT TO REVEAL SOURCE BUTTON */
 #eco-facts-box:hover #sourceBtn {
     opacity: 1;
     visibility: visible;
 }
 
+/* HOVER EFFECT FOR SOURCE BUTTON */
 #sourceBtn:hover {
     background-color: #3B6D11;
     color: #f4f9f2;
 }
 
-/* Animation Classes */
+/* =========================================
+   ANIMATION CLASSES
+   Toggled via JavaScript
+   ========================================= */
 .fade-out {
     opacity: 0;
 }

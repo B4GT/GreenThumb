@@ -5,8 +5,10 @@ student id last four: 8804
 cs username: elanza05
 */
 
-/* Main container for the plant generator interface */
-
+/* =========================================
+   PLANT GENERATOR CONTAINER
+   Main container for the plant generator
+   ========================================= */
 .generator{
     text-align:center;
     width: 400px;
@@ -21,13 +23,13 @@ cs username: elanza05
     color: #3b6d11;
 }
 
-/* Targets images inside the plant-display container */
+/* INDIVIDUAL PLANT IMAGE STYLING */
 .plant-display img{
     width: 200px;
     height: 250px;
     object-fit: cover;
     transition: transform 0.8s ease;
-    /* Smooth animation when a transform (like rotation) occurs */
+    /* Smooth animation when rotation occurs */
     border-style: solid;
     display: block;
     margin: 0 auto;
@@ -35,12 +37,19 @@ cs username: elanza05
     border-color: #3b6d11;
 }
 
-/* Class used to trigger a rotation animation */
+/* =========================================
+   ANIMATION CLASSES
+   Class applied via JavaScript to trigger
+   a rotation animation
+   ========================================= */
 .spin{
     transform: rotate(360deg);
 }
 
-/* Styles applied to all button elements */
+/* =========================================
+   INTERACTIVE BUTTON
+   Styling for the 'Generate' button
+   ========================================= */
 button{
     border-radius: 25px;
     padding:10px 15px;
@@ -48,19 +57,22 @@ button{
     cursor:pointer;
     background-color: #c2deba;
     color: #3b6d11;
-
     border-style: solid;
     border-width: 2px;
-
     border-color: #3B6D11;
 }
 
+/* =========================================
+   PLANT DESCRIPTION TEXT
+   Reserved space for the plant description
+   ========================================= */
 #plantDescription {
     margin: 15px 30px;
     font-size: 14px;
     line-height: 1.5;
 }
 
+/* LATIN NAME FORMATTING */
 .latin {
     font-style: italic;
 }

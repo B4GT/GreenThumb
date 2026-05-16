@@ -5,14 +5,18 @@ student id last four: 8804
 cs username: elanza05
 */
 
-/* Main container for the plant generator interface */
-
+/* =========================================
+   PLANT GENERATOR CONTAINER
+   Main container for the plant generator
+   ========================================= */
 #plant-gen-box {
     text-align: center;
     width: 100%;
+    /* 1. Lock the height so it doesn't resize */
     min-height: 550px; 
     display: flex;
     flex-direction: column;
+    /* Keeps buttons at the bottom */
     justify-content: space-between;    
     margin: auto;
     padding: 20px;
@@ -25,7 +29,11 @@ cs username: elanza05
     box-sizing: border-box;
 }
 
-/* Add Buffer above and below the image container */
+/* =========================================
+   PLANT DISPLAY AREA
+   The section of the generator containing
+   the plant image
+   ========================================= */
 #plant-gen-box .plant-display {
     margin: 40px 0;
     display: flex;
@@ -33,27 +41,38 @@ cs username: elanza05
     align-items: center;
 }
 
-/* Targets images inside the plant-display container */
+/* INDIVIDUAL PLANT IMAGE STYLING */
 .plant-display img{
     width: 200px;
     height: 250px;
+    /* Ensures photo fills dimensions without stretching */
     object-fit: cover;
+    /* Duration for the rotation animation */
     transition: transform 0.8s ease;
+    /* Ensure the image doesn't have extra bottom margin */
     margin: 0;
 }
 
-/* Add a border to generated images */
+/* GENERATED PLANT IMAGE STYLING */
 .plant-display img.generated {
   border: 3px solid #3b6d11;
   border-radius: 25px;
 }
 
-/* Class used to trigger a rotation animation */
+/* =========================================
+   ANIMATION CLASSES
+   Class applied via JavaScript to trigger
+   a rotation animation
+   ========================================= */
 .spin{
     transform: rotate(360deg);
 }
 
-/* Styles applied to all button elements */
+/* =========================================
+   INTERACTIVE BUTTONS
+   Consistent styling for the 'Generate' 
+   and 'View Product' buttons
+   ========================================= */
 .info-box button{
     border-radius: 25px;
     padding:10px 15px;
@@ -66,13 +85,17 @@ cs username: elanza05
     border-color: #3B6D11;
 }
 
+/* =========================================
+   PLANT DESCRIPTION TEXT
+   Reserved space for the plant description
+   ========================================= */
 #plantDescription {
     min-height: 50px; 
     margin: 10px 20px;
     font-size: 14px;
 }
 
+/* LATIN NAME FORMATTING */
 .latin {
     font-style: italic;
 }
-

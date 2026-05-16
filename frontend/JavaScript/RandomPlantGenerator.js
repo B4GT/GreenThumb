@@ -5,8 +5,12 @@ student id last four: 8804
 cs username: elanza05
 */
 
-/* Array storing all available plants.
-   Each object contains information used to update the page */
+/* =========================================
+   SUCCULENT DATASET
+   An array of objects containing
+   succulents, their images, descriptions
+   and corresponding shop links
+   ========================================= */
 const plants = [
 {
     name: "Burro's Tail (Sedum morganianum)",
@@ -130,8 +134,11 @@ const plants = [
 }
 ];
 
-/* Get references to elements from the HTML document
-   so JavaScript can modify them */
+/* =========================================
+   GLOBAL VARIABLES
+   Tracks current state and links
+   JavaScript to the HTML elements
+   ========================================= */
 const button = document.getElementById("generateBtn");
 const image = document.getElementById("plantImage");
 const name = document.getElementById("plantName");
@@ -144,15 +151,22 @@ let currentPlant = null;
 /* Stores the index of the last plant shown */
 let lastIndex = -1;
 
-/* Event listener that runs when the Generate Plant button is clicked */
+/* =========================================
+   PLANT GENERATOR LOGIC
+   Handles the random selection and
+   rendering of plant data
+   ========================================= */
 button.addEventListener("click", () => {
 
+    /* Triggers the spin animation for the plant image */
     image.classList.add("spin");
 
+    /* Delays the image swap to match animation timing */
     setTimeout(() => {
 
         let randomIndex;
 
+	/* Ensures the same plant isn't picked twice in a row */
         do {
             randomIndex = Math.floor(Math.random() * plants.length);
         } while (randomIndex === lastIndex);
@@ -160,23 +174,35 @@ button.addEventListener("click", () => {
         lastIndex = randomIndex;
         currentPlant = plants[randomIndex];
 
-        // Update image
+        /* Update plant image source */
         image.src = currentPlant.image;
 
-	// Add border styling for generated plants
+	/* Set the new generated image class as "generated" */
+	/* Used for styling purposes */
 	image.classList.add("generated");
 
-        // Clear previous name content
+	/* Reset the name container for new content */
         name.textContent = "";
 
-        // Split name into common + latin using DOM methods
-        const parts = currentPlant.name.split("(");
+	/* =========================================
+           NAME PARSING
+           Separates common names from Latin names
+           found in parentheses for custom styling
+           ========================================= */
 
+	/* Code was generated using ChatGPT.
+	   Prompt: "How can I parse a string in JavaScript so that I can
+		    italicize words inside parentheses but keep the string
+		    together?" */
+        // START
+        const parts = currentPlant.name.split("(");
         const commonName = parts[0].trim();
         const latinName = parts[1] ? parts[1].replace(")", "").trim() : "";
 
+	/* Create text node for the common name */
         const commonText = document.createTextNode(commonName + " ");
 
+	/* Create stylized span for the Latin name */
         const latinSpan = document.createElement("span");
         latinSpan.classList.add("latin");
         latinSpan.textContent = latinName ? `(${latinName})` : "";
@@ -185,16 +211,22 @@ button.addEventListener("click", () => {
         if (latinName) {
             name.appendChild(latinSpan);
         }
+	// STOP
 
-        // Update description
+	/* Update plant description text */
         description.textContent = currentPlant.description;
 
+	/* End spin animation after content updates */
         image.classList.remove("spin");
 
     }, 800);
 });
 
-/* Event listener for the View Product button */
+/* =========================================
+   PRODUCT NAVIGATION
+   Redirects the user to the specific
+   shop page for the current plant
+   ========================================= */
 productBtn.addEventListener("click", () => {
     if (currentPlant) {
         window.location.href = currentPlant.link;

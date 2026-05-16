@@ -1,34 +1,58 @@
+<!--
+filename: About.html
+author: Evan Lanza
+student id last four: 8804
+cs username: elanza05
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
+
+  <!-- =========================================
+       PAGE SETUP / META INFORMATION
+       ========================================= -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>About Green Thumb</title>
+
+  <!-- EXTERNAL CSS STYLESHEET LINK -->
   <link rel="stylesheet" href="../Stylesheet/about.css">
+
+  <!-- GOOGLE FONTS LINK -->
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- MATERIAL ICONS LINK -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart" />
 
-<<<<<<< HEAD:HTML/About.html
 </head>
-=======
-nav { /* replace this styling later */
-  background-color: #333;
-  padding: 10px;
-}
->>>>>>> origin/Daniel:frontend/HTML/About.html
 
 <body>
 
+<!-- =========================================
+     PAGE WRAPPER (GRID LAYOUT CONTAINER)
+     Holds all page sections
+     ========================================= -->
 <div class="grid-container">
 
-  <!-- NAVBAR -->
+  <!-- =========================================
+       NAVIGATION BAR
+       Contains:
+       - Logo (clickable home link)
+       - Navigation links
+       - Shopping cart icon
+       ========================================= -->
   <nav class="navbar">
+
+    <!-- LOGO (HOME LINK) -->
     <div class="logo">
       <a href="index.html">
 	<img src="../IMGS/logo.png" alt="Green Thumb Logo">
       </a>
     </div>
 
+    <!-- NAVIGATION LINKS -->
     <div class="navLinks">
       <a href="index.html">Home</a>
       <a href="Shop.html">Shop</a>
@@ -37,6 +61,7 @@ nav { /* replace this styling later */
       <a href="Review.html">Reviews</a>
     </div>
 
+    <!-- CART ICON -->
     <div class="nav-icons">
       <a href="Cart.html">
         <span class="material-symbols-outlined">shopping_cart</span>
@@ -44,20 +69,38 @@ nav { /* replace this styling later */
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- =========================================
+       HERO SECTION (MAIN CONTENT AREA)
+       Contains:
+       - Brand intro
+       - Slogan
+       - Logo image
+       - Story content
+       ========================================= -->
   <section class="hero">
+
+    <!-- WRAPPER FOR HERO CONTENT -->
     <div class="hero-text">
 
-      <!-- CENTERED INTRO -->
+      <!-- =========================================
+           INTRO SECTION
+           Brand identity + logo + slogan
+           ========================================= -->
       <div class="intro">
         <h1>Green Thumb</h1>
         <p>Your Journey to Zero Waste Starts Here.</p>
+
+
+	<!-- LOGO -->
         <div class="plantImg">
           <img src="../IMGS/logo.png" alt="Green Thumb Logo">
         </div>
       </div>
 
-      <!-- LEFT ALIGNED STORY -->
+      <!-- =========================================
+           STORY SECTION
+           Background + mission statement
+           ========================================= -->
       <div class="story">
         <h2>Our Story</h2>
         <p>
@@ -70,11 +113,18 @@ nav { /* replace this styling later */
           So we built Green Thumb as a space where eco-friendly living feels approachable, not overwhelming. Every product we offer is a step toward reducing waste and building a more sustainable lifestyle.
         </p>
       </div>
-
     </div>
   </section>
 
+  <!-- =========================================
+       UNIQUE & VALUES SECTION
+       Contains:
+       - What makes Green Thumb unique
+       - Core values
+       ========================================= -->
   <section class="unique-values-grid">
+
+    <!-- UNIQUE SECTION -->
     <div class="unique info-box">
       <h2>What makes Green Thumb Unique?</h2>
       <p>
@@ -82,6 +132,7 @@ nav { /* replace this styling later */
       </p>
     </div>
 
+    <!-- VALUES SECTION -->
     <div class="values info-box">
       <h2>Our Values</h2>
       <p><strong>1. Mindful Consumption:</strong> Buying only what you need and choosing items that last.</p>
@@ -90,7 +141,15 @@ nav { /* replace this styling later */
     </div>
   </section>
 
+  <!-- =========================================
+       SUSTAINABILITY & IMPACT TRACKER SECTION
+       Contains:
+       - Sustainability tips
+       - Impact tracker
+       ========================================= -->
   <section class="sustainability-tracker-grid">
+
+    <!-- SUSTAINABILITY SECTION -->
     <div class="sustainability info-box">
       <h2>Why Sustainability Matters</h2>
       <p>
@@ -104,25 +163,38 @@ nav { /* replace this styling later */
       </ul>
     </div>
 
+    <!-- IMPACT TRACKER SECTION -->
     <div class="tracker info-box">
       <h2>Your Impact Tracker</h2>
+
+      <!-- IMPACT TRACKER STATS CONTAINER -->
       <div class="tracker-container">
+
+	<!-- WATER BOTTLE STAT -->
         <div class="impact-stat">
           <span id="bottles-stat" class="impact-number">0</span>
           <p class="impact-label">Plastic Bottles Diverted</p>
         </div>
+
         <hr>
+
+	<!-- PLASTIC BAG STAT -->
         <div class="impact-stat">
           <span id="bags-stat" class="impact-number">0</span>
           <p class="impact-label">Plastic Bags Avoided</p>
         </div>
+
         <hr>
+
+	<!-- OXYGEN STAT -->
         <div class="impact-stat">
           <span id="oxygen-stat" class="impact-number">0</span>
           <p class="impact-label">Liters of Oxygen Generated</p>
         </div>
       </div>
-        <p style="font-size: 0.8rem; margin-top: 15px; font-style: italic;">
+
+	<!-- FOOTNOTE -->
+        <p class="tracker-footnote">
         *Calculated based on your Green Thumb purchases.
         </p>
     </div>
