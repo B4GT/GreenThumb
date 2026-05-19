@@ -1,12 +1,9 @@
-fetch('../JSON/Products.json')
-    .then(res => res.json())
-    .then(data => {
-
-
-        const products = data.products
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const products = await fetchProductsFromBackend();
 
         const params = new URLSearchParams(window.location.search)
-        const id = Number(params.get('id'))
+        const id = params.get('id')
 
 
         const addToCartBtn = document.querySelector('.quick-add-to-cart')
@@ -112,4 +109,7 @@ fetch('../JSON/Products.json')
 
 
 
-    })
+    } catch (err) {
+        console.log("Failed to load product", err);
+    }
+});

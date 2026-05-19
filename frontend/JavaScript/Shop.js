@@ -2,9 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const grid = document.getElementsByClassName("grid")[0]
 
     try {
-        const res = await fetch('../JSON/Products.json')
-        const data = await res.json()
-        const products = data.products
+        const products = await fetchProductsFromBackend();
 
         products.forEach((product) => {
             const card = document.createElement('div')

@@ -44,12 +44,9 @@ function searchProducts(products, query) {
 }
 
 // Will edit this to take from server instead
-fetch("../JSON/Products.json")
-  .then(r => r.json())
-  .then(d => {
-    products = d.products;
-
-    // Display products once they are loaded
+fetchProductsFromBackend()
+  .then(data => {
+    products = data;
     displayTopProducts();
   })
   .catch(err => console.error("Error loading products:", err));
