@@ -9,6 +9,7 @@ const connectToDB = require('./mongodb')
 const adminProductRoutes = require('./routes/admin-route')
 const authRoutes = require('./routes/auth-route')
 const orderRoutes = require('./routes/order-route')
+const publicRoutes = require("./routes/public-route");
 
 const app = express()
 app.set("trust proxy", 1);
@@ -42,6 +43,7 @@ app.get('/', (req, res) => {
 app.use('/api/admin/products', adminProductRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/orders', orderRoutes)
+app.use('/api/products', publicRoutes)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
