@@ -1,3 +1,10 @@
+/*
+filename: Product.css
+author: Stevens L
+student id last four: 0791
+cs username:
+*/
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,22 +13,23 @@
 
 body {
   font-family: 'Nunito', sans-serif;
-  background-color: #eef5ea;
-  color: #2f3a2f;
-  padding: 20px;
+  background-color: #c0dd97;
+  color: #1a3a16;
+  padding: 100px 20px 60px;
   min-height: 100vh;
 }
 
 .product-card {
-  margin-top: 10px;
+  margin-top: 100px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  border: 2px solid #444;
+  border: 2px solid #1a3a16;
+  background-color: #eef5ea;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   border-radius: 25px;
   padding: 40px;
-  background-color: white;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* IMAGE SIDE */
@@ -29,9 +37,9 @@ body {
   position: relative;
   max-width: 400px;
   aspect-ratio: 1 / 1;
-  border: 2px solid #444;
+  border: 2px solid #1a3a16;
   border-radius: 25px;
-  background-color: #eef5ea;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,7 +93,7 @@ body {
 
 .product-name {
   font-family: 'Lora', serif;
-  font-size: 2.2rem;
+  font-size: 3rem;
   font-weight: 600;
   color: #1a3a16;
   line-height: 1.2;
@@ -98,7 +106,7 @@ body {
 }
 
 .product-description {
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 1.7;
   color: #3a5235;
 }
@@ -125,17 +133,17 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 12px;
+  margin-top: auto;
   flex-wrap: wrap;
 }
 .qty-wrap {
   display: flex;
   align-items: center;
   gap: 8px;
-  border: 2px solid #444;
+  border: 2px solid #1a3a16;
   border-radius: 20px;
   padding: 8px 14px;
-  background-color: #fefcf8;
+  background-color: white;
   font-size: 0.95rem;
   color: #2f3a2f;
 }
@@ -177,10 +185,10 @@ body {
 .like-button {
   width: 48px;
   height: 48px;
-  border: 2px solid #444;
+  border: 2px solid #1a3a16;
   border-radius: 50%;
   background-color: #fefcf8;
-  color: #3b6d11;
+  color: #1a3a16;
   font-size: 1.4rem;
   cursor: pointer;
   display: flex;

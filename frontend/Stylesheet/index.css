@@ -14,31 +14,40 @@ cs username:
 body {
   font-family: 'Nunito', sans-serif;
   background-color: #1a3a16;
-  color: black;
+  color: #1a3a16;
   padding-top: 50px;
 }
 
-/* Scroll to top button styling */
-
+/* =========================================
+   BACK TO TOP BUTTON
+   Button that takes the user to the top
+   of the page
+   ========================================= */
 #goUP {
-  display: none;
+display: none;
   position: fixed;
   bottom: 20px;
   right: 30px;
   z-index: 99;
   font-size: 14px;
-  border: none;
-  outline: none;
-  background: rgba(102, 153, 255, 0.75);
+  border: 2px solid #1a3a16;
+  background: #c2deba;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-  color: white;
+  color: #1a3a16;
   cursor: pointer;
-  padding: 15px;
-  border-radius: 4px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* BACK TO TOP BUTTON HOVER EFFECT */
 #goUP:hover {
-  background-color: black;
+  background-color: #678f62;
+  color: #eef5ea;
 }
 
 .grid-container {
@@ -47,110 +56,15 @@ body {
   gap: 30px;
 }
 
-/* NAVBAR */
-.navbar {
-  position: fixed; 
-  top: 0px; 
-  left: 0; 
-  right: 0; 
-  z-index: 100;
-  display: grid;
-  grid-template-columns: 80px 1fr 80px;
-  align-items: center;
-  padding: 12px 20px;
-  border-bottom: 1.5px solid #c2deba;
-  background-color: #fefcf8;
-  box-shadow: 0 2px 12px rgba(45,90,39,0.08);
-}
-
-.navbar a {
-  font-weight: bold;
-}
-
-.navbar a:hover {
-  background-color: #eaf3de;
-  color: #3b6d11;
-}
-
-.navLinks {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  padding: 12px 20px;
-  box-shadow: 0 2px 12px rgba(45, 90, 39, 0, 0.08);
-}
-
-.navLinks a,
-.nav-icons a {
-  font-family: 'Nunito', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  color: #2e8b57;
-  padding: 6px 16px;
-  border-radius: 20px;
-  transition: background 0.2s, color 0.2;
-  /* font-size: 1.1rem;  old font size */
-}
-
-.navLinks a.active {
-  background: #3b6d11;
-  color: #eaf3de;
-}
-
-.nav-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-self: end;
-  gap: 12px;
-}
-
-.nav-icons a {
-  color: black;
-}
-
-/* =========================================
-   NAVBAR LOGO
-   Controls the size and positioning of
-   the Green Thumb logo inside the navbar
-   ========================================= */
-.logo {
-  width: 50px;
-  height: 50px;
-  overflow: visible;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* LOGO IMAGE SIZING */
-.logo a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-/* LOGO IMAGE STYLING */
-.logo img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  display: block;
-}
-
 /* HERO */
 .hero {
   display: grid;
   gap: 20px;
-  border: 2px solid #444;
+  border-bottom: 2px solid #1a3a16;
   border-radius: 25px;
   padding: 40px 20px;
   background-color: #c0dd97;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .hero-text {
@@ -175,7 +89,7 @@ body {
   grid-template-columns: 1fr 90px;
   width: 80%;
   max-width: 500px;
-  border: 2px solid #444;
+  border: 2px solid #1a3a16;
   border-radius: 25px;
   overflow: hidden;
 }
@@ -201,7 +115,7 @@ body {
 .plantImg {
   height: 100%;
   width: 100%;
-  border: 2px solid #444;
+  border: 2px solid #1a3a16;
   border-radius: 25px;
   background-color: #eef5ea;
   overflow: hidden;
@@ -218,12 +132,14 @@ body {
 
 /* BEST SELLERS */
 .best-sellers {
-  border: 2px solid #444;
+  border-top: 2px solid #1a3a16;
+  border-bottom: 2px solid #1a3a16;
   border-radius: 25px;
   padding: 20px;
   background-color: #c0dd97;
   display: grid;
   gap: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .best-sellers h2 {
@@ -239,25 +155,28 @@ body {
 
 /* Updated for dynamically injected product cards from Search.js */
 .product-cards {
-  border: 2px solid #444;
+  border: 2px solid #1a3a16;
   border-radius: 25px;
-  min-height: 220px;
+  min-height: 350px;
   padding: 15px;
   display: flex; /* changed from grid for cleaner image/text/button stacking */
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: #fafafa;
+  background-color: #eef5ea;
 }
 
 /* Added image styling for JSON-driven best seller cards */
 .product-cards img {
   width: 100%;
-  max-width: 180px;
-  height: 180px;
+  max-width: 200px;
+  height: 200px;
   object-fit: cover;
   display: block;
   margin-bottom: 10px;
+  border: 2px solid #1a3a16;
+  border-radius: 25px;
+  overflow: hidden;
 }
 
 /* Added text styling to match new <p> tag in Search.js */
@@ -288,7 +207,7 @@ body {
 }
 
 .info-box {
-  border: 2px solid #444;
+  border-top: 2px solid #1a3a16;
   border-radius: 25px;
   background-color: #c0dd97;
   padding: 20px;
@@ -296,6 +215,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 /* RESPONSIVE */

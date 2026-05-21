@@ -1,8 +1,9 @@
 body {
   font-family: 'Nunito', sans-serif;
-  background-color:#f3f8f2;
+  background-color:#c0dd97;
   text-align:center;
   padding-top: 80px;
+  color: #1a3a16;
 }
 
 .cart-item{
@@ -10,17 +11,17 @@ body {
   margin:10px auto;
   padding:15px;
   width:300px;
-  border-radius:8px;
+  border-radius:25px;
   box-shadow:0 2px 5px rgba(0,0,0,0.2);
 }
 
 button{
-  background:#2e8b57;
+  background:#678f62;
   color:white;
   border:none;
   padding:10px 15px;
   margin-top:10px;
-  border-radius:5px;
+  border-radius:25px;
   cursor:pointer;
 }
 
@@ -37,101 +38,4 @@ input{
 
 .checkout-btn{
   margin-top:20px;
-}
-
-.navbar {
-  position: fixed; 
-  top: 0px; 
-  left: 0; 
-  right: 0; 
-  z-index: 100;
-  display: grid;
-  grid-template-columns: 80px 1fr 80px;
-  align-items: center;
-  padding: 12px 20px;
-  border-bottom: 1.5px solid #c2deba;
-  background-color: #fefcf8;
-  box-shadow: 0 2px 12px rgba(45,90,39,0.08);
-}
-
-.navbar a {
-
-  font-size: 13px;
-  font-weight: bold;
-
-  color: #2e8b57;
-  text-decoration: none;
-
-  padding: 6px 14px;
-  border-radius: 20px;
-
-  transition: 0.2s;
-}
-
-.navbar a:hover {
-  background: #eaf3de;
-}
-
-.navbar a.active {
-  background: #2e8b57;
-  color: #eaf3de;
-}
-
-.navLinks {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  padding: 12px 20px;
-  box-shadow: 0 2px 12px rgba(45, 90, 39, 0, 0.08);
-}
-
-.navLinks a,
-.nav-icons a {
-  font-family: 'Nunito', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  color: #2e8b57;
-  padding: 6px 16px;
-  border-radius: 20px;
-  transition: background 0.2s, color 0.2;
-  /* font-size: 1.1rem;  old font size */
-}
-
-.nav-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-self: end;
-  gap: 12px;
-}
-
-.nav-icons a {
-  color: black;
-}
-
-.logo {
-  width: 50px;
-  height: 50px;
-  overflow: visible;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.logo img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  display: block;
 }

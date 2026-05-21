@@ -1,8 +1,6 @@
 body {
   font-family: 'Nunito', sans-serif;
-  padding-top: 70px;
 }
-
 
 /* NAVBAR */
 .navbar {
@@ -15,7 +13,7 @@ body {
   grid-template-columns: 80px 1fr 80px;
   align-items: center;
   padding: 12px 20px;
-  border-bottom: 1.5px solid #c2deba;
+  border-bottom: 2px solid #1a3a16;
   background-color: #fefcf8;
   box-shadow: 0 2px 12px rgba(45,90,39,0.08);
 }
@@ -53,7 +51,7 @@ body {
 }
 
 .navLinks a.active {
-  background: #3b6d11;
+  background: #678f62;
   color: #eaf3de;
 }
 
@@ -69,7 +67,11 @@ body {
   color: black;
 }
 
-/* NAVBAR LOGO */
+/* =========================================
+   NAVBAR LOGO
+   Controls the size and positioning of
+   the Green Thumb logo inside the navbar
+   ========================================= */
 .logo {
   width: 50px;
   height: 50px;
@@ -79,6 +81,7 @@ body {
   justify-content: center;
 }
 
+/* LOGO IMAGE SIZING */
 .logo a {
   display: flex;
   align-items: center;
@@ -87,6 +90,7 @@ body {
   height: 100%;
 }
 
+/* LOGO IMAGE STYLING */
 .logo img {
   width: 80px;
   height: 80px;
