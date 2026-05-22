@@ -43,13 +43,18 @@ function searchProducts(products, query) {
   });
 }
 
-// Will edit this to take from server instead
+const topProductsContainer = document.getElementById("top-products");
+topProductsContainer.innerHTML = "<p>Loading products. This may take a minute if the backend is starting up...</p>";
+
 fetchProductsFromBackend()
   .then(data => {
     products = data;
     displayTopProducts();
   })
-  .catch(err => console.error("Error loading products:", err));
+  .catch(err => {
+    console.error("Error loading products:", err);
+    topProductsContainer.innerHTML = "<p>Products failed to load. Please refresh the page in a minute.</p>";
+  });
 
 // Search button
 document.getElementById("searchBtn").addEventListener("click", () => {

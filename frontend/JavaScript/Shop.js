@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const grid = document.getElementsByClassName("grid")[0]
+    grid.innerHTML = "<p>Loading products. This may take a minute if the backend is starting up...</p>";
 
     try {
         const products = await fetchProductsFromBackend();
+        grid.innerHTML = "";
 
         products.forEach((product) => {
             const card = document.createElement('div')
@@ -66,7 +68,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     cart.push({
                         name: product.name,
                         price: parseFloat(product.price),
-                        quantity: quantity
+                        quantity: quantity,
                         image: product.images[0]
                     });
                 }
@@ -89,5 +91,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
     } catch (err) {
         console.log('failed to load products', err)
+        grid.innerHTML = "<p>Products failed to load. Please refresh the page in a minute.</p>";
     }
 })

@@ -35,7 +35,7 @@ loginForm.addEventListener("submit", async (event) => {
       });
 
       const checkData = await checkResponse.json();
-      if (checkData.success) { // CHECK BACK HERE LATER - are we going to have accounts for regular users? Right now, any successful login is assumed to be by the admin
+      if (checkData.success) { 
         message.textContent = "Login successful. You are now being redirected"
         window.location.href = "Admin.html"
       } else {

@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", async () => {
+    const productName = document.querySelector('.product-name');
+
+    if (productName) {
+        productName.innerText = "Loading product. This may take a minute if the backend is starting up...";
+    }
+
     try {
         const products = await fetchProductsFromBackend();
 
@@ -92,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     cart.push({
                         name: product.name,
                         price: parseFloat(product.price),
-                        quantity: qty
+                        quantity: qty,
                         image: product.images[0]
                     });
                 }
@@ -112,5 +118,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     } catch (err) {
         console.log("Failed to load product", err);
+
+        const productName = document.querySelector('.product-name');
+        if (productName) {
+            productName.innerText = "Product failed to load. Please refresh the page in a minute.";
+        }
     }
 });
