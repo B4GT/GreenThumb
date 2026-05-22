@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         name: product.name,
                         price: parseFloat(product.price),
                         quantity: quantity
+                        image: product.images[0]
                     });
                 }
                 localStorage.setItem("cart", JSON.stringify(cart));
