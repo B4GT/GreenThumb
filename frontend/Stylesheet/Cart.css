@@ -10,9 +10,16 @@ body {
   background:white;
   margin:10px auto;
   padding:15px;
-  width:300px;
+  width:500px;
+
   border-radius:25px;
   box-shadow:0 2px 5px rgba(0,0,0,0.2);
+
+  display:flex;
+  align-items:center;
+  gap:15px;
+
+  text-align:left;
 }
 
 button{
@@ -38,4 +45,17 @@ input{
 
 .checkout-btn{
   margin-top:20px;
+}
+
+.cart-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
