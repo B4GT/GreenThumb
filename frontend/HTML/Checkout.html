@@ -20,12 +20,17 @@
     </a>
   </div>
 
-  <div class="navLinks">
+  <button class="navbar-toggle" id="navbarToggle">
+    ☰
+  </button>
+
+  <div class="navLinks" id="navLinks">
     <a href="index.html">Home</a>
     <a href="Shop.html">Shop</a>
     <a href="Checkout.html" class="active">Checkout</a>
     <a href="About.html">About</a>
     <a href="Review.html">Reviews</a>
+    <a href="Cart.html" class="mCart">Cart</a>
   </div>
 
   <div class="nav-icons">
@@ -134,19 +139,28 @@ paymentOptions.forEach(option => {
 document.getElementById('payment-form').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  <!-- Calculate the impact and clear out the active cart -->
+  // Calculate the impact and clear out the active cart
   if (typeof processPurchaseImpact === "function") {
       processPurchaseImpact();
   }
 
-  <!-- Show completed purchse message -->
+  // Show completed purchase message
   document.getElementById('confirmation').innerText = "Purchase completed successfully! Redirecting to view your impact...";
 
-  <!-- Redirect user to the About Page -->
+  // Redirect user to the About Page
   setTimeout(() => {
       window.location.href = "About.html";
   }, 2000);
 });
+</script>
+
+<script>
+  const menuToggle = document.getElementById("navbarToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
 </script>
 
 </body>

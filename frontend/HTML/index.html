@@ -37,12 +37,17 @@ cs username:
 	      </a>
       </div>
 
-      <div class="navLinks">
+      <button class="navbar-toggle" id="navbarToggle">
+        ☰
+      </button>
+
+      <div class="navLinks" id="navLinks">
         <a href="index.html" class="active">Home</a>
         <a href="Shop.html">Shop</a>
         <a href="Checkout.html">Checkout</a>
         <a href="About.html">About</a>
         <a href="Review.html">Reviews</a>
+        <a href="Cart.html" class="mCart">Cart</a>
       </div>
 
       <div class="nav-icons">
@@ -183,6 +188,15 @@ cs username:
       document.body.scrollTop = 0; // For Safari
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
+  </script>
+
+  <script>
+    const menuToggle = document.getElementById("navbarToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
   </script>
 
 </body>

@@ -42,12 +42,17 @@ cs username: elanza05
         </a>    
       </div>
       <!-- NAVIGATION LINKS -->    
-      <div class="navLinks">      
-        <a href="index.html">Home</a>      
-        <a href="Shop.html">Shop</a>      
-        <a href="Checkout.html">Checkout</a>      
-        <a href="About.html" class="active">About</a>      
-        <a href="Review.html">Reviews</a>    
+      <button class="navbar-toggle" id="navbarToggle">
+        ☰
+      </button>
+
+      <div class="navLinks" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="Shop.html">Shop</a>
+        <a href="Checkout.html">Checkout</a>
+        <a href="About.html" class="active">About</a>
+        <a href="Review.html">Reviews</a>
+        <a href="Cart.html" class="mCart">Cart</a>
       </div>
       <!-- CART ICON -->    
       <div class="nav-icons">      
@@ -177,6 +182,15 @@ cs username: elanza05
       document.body.scrollTop = 0;      
       document.documentElement.scrollTop = 0;      
     }  
+  </script>
+
+  <script>
+    const menuToggle = document.getElementById("navbarToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
   </script>
 </body>
 </html>

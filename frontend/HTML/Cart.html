@@ -19,16 +19,22 @@
 	        <img src="../IMGS/logo.png" alt="Green Thumb Logo">
 	      </a>
       </div>
-    <div class="navLinks">
-      <a href="index.html">Home</a>
-      <a href="Shop.html">Shop</a>
-      <a href="Checkout.html">Checkout</a>
-      <a href="About.html">About</a>
-      <a href="Review.html">Reviews</a>
-    </div>
+      
+      <button class="navbar-toggle" id="navbarToggle">
+        ☰
+      </button>
+
+      <div class="navLinks" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="Shop.html">Shop</a>
+        <a href="Checkout.html">Checkout</a>
+        <a href="About.html">About</a>
+        <a href="Review.html">Reviews</a>
+        <a href="Cart.html" class="active">Cart</a>
+      </div>
 
     <div class="nav-icons">
-      <a href="Cart.html" class="active">
+      <a href="Cart.html" class="mCart">
         <span class="material-symbols-outlined">shopping_cart</span>
       </a>
     </div>
@@ -46,5 +52,14 @@
   </button>
   
   <script src="../JavaScript/Cart.js"></script>
+
+  <script>
+    const menuToggle = document.getElementById("navbarToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  </script>
 </body>
 </html>

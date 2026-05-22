@@ -26,13 +26,19 @@ document.addEventListener("DOMContentLoaded", () => {
 	      </a>
       </div>
 
-      <div class="navLinks">
-        <a href="index.html" data-page="index.html">Home</a>
-        <a href="Shop.html" data-page="Shop.html">Shop</a>
-        <a href="Checkout.html" data-page="Checkout.html">Checkout</a>
-        <a href="About.html" data-page="About.html">About</a>
-        <a href="Review.html" data-page="Review.html">Reviews</a>
+      <button class="navbar-toggle" id="navbarToggle">
+        ☰
+      </button>
+
+      <div class="navLinks" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="Shop.html" class="active">Shop</a>
+        <a href="Checkout.html">Checkout</a>
+        <a href="About.html">About</a>
+        <a href="Review.html">Reviews</a>
+        <a href="Cart.html" class="mCart">Cart</a>
       </div>
+
       <div class="nav-icons">
         <a href="Cart.html" data-page="Cart.html">
           <span class="material-symbols-outlined">shopping_cart</span>
@@ -46,5 +52,15 @@ document.addEventListener("DOMContentLoaded", () => {
         placeholder.innerHTML = navHTML;
         const activeLink = document.querySelector(`.navLinks [data-page="${currentPage}"]`);
         if (activeLink) activeLink.classList.add('active');
+
+
+        const menuToggle = document.getElementById("navbarToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("show");
+            });
+        }
     }
 });
