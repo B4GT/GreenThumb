@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         name: product.name,
                         price: parseFloat(product.price),
                         quantity: qty
+                        image: product.images[0]
                     });
                 }
 
