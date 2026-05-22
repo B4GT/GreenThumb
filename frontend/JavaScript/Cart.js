@@ -29,13 +29,15 @@ function displayCart() {
 
         container.innerHTML += `
             <div class="cart-item">
-                <h3>${item.name}</h3>
-                <p>Price: $${parseFloat(item.price).toFixed(2)}</p>
-                <p>Quantity: ${item.quantity}</p>
-
-                <button onclick="changeQuantity(${index}, 1)">+</button>
-                <button onclick="changeQuantity(${index}, -1)">-</button>
-                <button onclick="removeItem(${index})">Remove</button>
+                <img src="${item.image}" alt="${item.name}" class="cart-image">
+                <div class="cart-info">
+                    <h3>${item.name}</h3>
+                    <p>Price: $${parseFloat(item.price).toFixed(2)}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                    <button onclick="changeQuantity(${index}, 1)">+</button>
+                    <button onclick="changeQuantity(${index}, -1)">-</button>
+                    <button onclick="removeItem(${index})">Remove</button>
+                </div>
             </div>
         `;
     });
